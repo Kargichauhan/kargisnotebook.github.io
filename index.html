@@ -1,18 +1,23 @@
+<!DOCTYPE html>
+<html lang="en" data-theme="light">
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-  
 
+  
   <link rel="icon" href="favicon.ico" type="image/x-icon" />
 
-
-  <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@400;600&display=swap" rel="stylesheet" />
   
-  <title> KC's Notebook</title>
+  <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@400;600&display=swap" rel="stylesheet" />
+
+ 
   <link rel="stylesheet" href="style.css" />
+
+  <title>KC's Notebook</title>
 </head>
 
 <body>
+  
   <header>
     <div class="nav">
       <span class="logo">🍵 Kargi’s Log</span>
@@ -23,27 +28,34 @@
       <span class="title-text">Helloooo</span>
     </h1>
     <p class="intro">
-        This is Kargi :) <br />
-        I’m documenting my learning journey — unfiltered, with a cup of matcha in hand 🍵.
+      This is Kargi :) <br />
+      I’m documenting my learning journey — unfiltered, with a cup of matcha in hand 🍵.
     </p>
   </header>
 
+  
   <main class="post-list">
     <div class="post">
       <h2 class="post-title">
-        <a href="Neurosymbolic-AI.html"> What is Neurosymbolic AI? Explained Simply.</a>
+        <a href="posts/Neurosymbolic-AI.html">What is Neurosymbolic AI? Explained Simply.</a>
       </h2>
       <div class="post-meta">🗓️ May 1, 2025 • ⏱️ 15 min read</div>
-      <p class="post-summary"></p>
+      <p class="post-summary">How logic meets learning: A gentle intro to Logic Tensor Networks and why we need neuro-symbolic reasoning in AI.</p>
     </div>
   </main>
 
+  
   <script>
-    const toggleBtn = document.getElementById("theme-toggle");
-    toggleBtn.onclick = () => {
+    const savedTheme = localStorage.getItem('theme') || (window.matchMedia('(prefers-color-scheme: dark)').matches ? 'dark' : 'light');
+    document.documentElement.dataset.theme = savedTheme;
+    document.getElementById("theme-toggle").textContent = savedTheme === "light" ? "🌙" : "☀️";
+
+    document.getElementById("theme-toggle").onclick = () => {
       const html = document.documentElement;
-      html.dataset.theme = html.dataset.theme === "light" ? "dark" : "light";
-      toggleBtn.textContent = html.dataset.theme === "light" ? "🌙" : "☀️";
+      const newTheme = html.dataset.theme === "light" ? "dark" : "light";
+      html.dataset.theme = newTheme;
+      localStorage.setItem("theme", newTheme);
+      document.getElementById("theme-toggle").textContent = newTheme === "light" ? "🌙" : "☀️";
     };
   </script>
 </body>
