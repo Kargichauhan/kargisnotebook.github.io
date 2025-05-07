@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en" data-theme="light">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@400;600&display=swap" rel="stylesheet" />
+  <title>🍵 KC's Log</title>
+  <link rel="stylesheet" href="style.css" />
+</head>
+<body>
+  <header>
+    <div class="nav">
+      <span class="logo">🍵 KC’s Log</span>
+      <button id="theme-toggle">🌙</button>
+    </div>
+    <h1>
+      <span class="emoji">👋</span>
+      <span class="title-text">Helloooo</span>
+    </h1>
+    <p class="intro">
+        This is Kargi :) <br />
+        I’m documenting my learning journey — unfiltered, with a cup of matcha in hand 🍵.
+    </p>
+  </header>
+
+  <main class="post-list">
+    <div class="post">
+      <h2 class="post-title">
+        <a href="posts/fine-tuning-qlora.html">Fine-tuning GPT with QLoRA: What Worked, What Didn’t</a>
+      </h2>
+      <div class="post-meta">🗓️ May 5, 2025 • ⏱️ 15 min read</div>
+      <p class="post-summary">A weekend deep dive into parameter-efficient fine-tuning. Includes bugs, learnings, and code.</p>
+    </div>
+  </main>
+
+  <script>
+    const toggleBtn = document.getElementById("theme-toggle");
+    toggleBtn.onclick = () => {
+      const html = document.documentElement;
+      html.dataset.theme = html.dataset.theme === "light" ? "dark" : "light";
+      toggleBtn.textContent = html.dataset.theme === "light" ? "🌙" : "☀️";
+    };
+  </script>
+</body>
+</html>
