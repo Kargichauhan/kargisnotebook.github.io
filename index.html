@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="en" data-theme="light">
+<html lang="en" data-theme="">
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
@@ -7,6 +7,12 @@
   <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@400;600&display=swap" rel="stylesheet" />
   <link rel="stylesheet" href="style.css" />
   <title>KC's Notebook</title>
+
+  <!-- Sync saved theme from localStorage -->
+  <script>
+    const savedTheme = localStorage.getItem('theme') || 'light';
+    document.documentElement.setAttribute('data-theme', savedTheme);
+  </script>
 </head>
 <body>
   <header>
@@ -28,6 +34,21 @@
     </div>
   </main>
 
-  <script src="theme.js"></script>
+  <!-- Theme toggle logic -->
+  <script>
+    const toggleBtn = document.getElementById("theme-toggle");
+    if (toggleBtn) {
+      const current = localStorage.getItem("theme") || "light";
+      toggleBtn.textContent = current === "light" ? "🌙" : "☀️";
+      
+      toggleBtn.onclick = () => {
+        const html = document.documentElement;
+        const nextTheme = html.dataset.theme === "light" ? "dark" : "light";
+        html.dataset.theme = nextTheme;
+        localStorage.setItem("theme", nextTheme);
+        toggleBtn.textContent = nextTheme === "light" ? "🌙" : "☀️";
+      };
+    }
+  </script>
 </body>
 </html>
