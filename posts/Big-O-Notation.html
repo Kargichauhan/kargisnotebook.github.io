@@ -1,0 +1,264 @@
+<!DOCTYPE html>
+<html lang="en" data-theme="light">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Big O Notation: Starting Simple, Staying Sane</title>
+  <link rel="stylesheet" href="../style.css" />
+  <link rel="icon" href="../favicon.ico" type="image/x-icon" />
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600&display=swap" rel="stylesheet" />
+  <style>
+    body {
+      max-width: 760px;
+      margin: auto;
+      padding: 2.5rem 1rem;
+      font-family: 'Inter', sans-serif;
+      background-color: var(--bg-color);
+      color: var(--text-color);
+      font-size: 1.05rem;
+      line-height: 1.7;
+    }
+
+    h1 {
+      font-size: 2.2rem;
+      margin-bottom: 0.5rem;
+    }
+
+    .meta {
+      font-size: 0.9rem;
+      color: var(--meta-color);
+      margin-bottom: 2rem;
+    }
+
+    details.toc {
+      background: var(--card-color);
+      padding: 1rem;
+      border-radius: 10px;
+      margin-bottom: 2rem;
+      box-shadow: 0 4px 10px var(--shadow);
+    }
+
+    details.toc a {
+      color: #74e474;
+      text-decoration: none;
+    }
+
+    details.toc a:hover {
+      text-decoration: underline;
+    }
+
+    h2 {
+      color: #7bed9f;
+      margin-top: 2.5rem;
+    }
+
+    ul {
+      padding-left: 1.4rem;
+    }
+
+    code {
+      background: #2e2e2e;
+      padding: 0.25rem 0.4rem;
+      border-radius: 5px;
+      color: #b8f5c8;
+    }
+
+    pre {
+      background: #2e2e2e;
+      padding: 1rem;
+      border-radius: 8px;
+      overflow-x: auto;
+      font-family: monospace;
+      font-size: 0.9rem;
+      color: #d5f9dc;
+    }
+
+    .citation-container {
+      position: relative;
+      margin-top: 1rem;
+    }
+
+    .cite-box {
+      background: #2b2b2b;
+      padding: 1rem;
+      border-radius: 8px;
+      white-space: pre-wrap;
+      font-family: monospace;
+      font-size: 0.9rem;
+      color: #d0f7cf;
+    }
+
+    #copy-btn {
+      position: absolute;
+      top: 10px;
+      right: 10px;
+      background-color: #4caf50;
+      color: white;
+      border: none;
+      padding: 0.4rem 0.8rem;
+      border-radius: 6px;
+      cursor: pointer;
+      font-size: 0.8rem;
+    }
+
+    #copy-btn:hover {
+      background-color: #45a049;
+    }
+  </style>
+</head>
+
+<body>
+  <h1>Big O Notation</h1>
+  <p class="meta">Date: May 6, 2025 • Estimated Reading Time: 6 min • Author: Kargi Chauhan</p>
+
+  <details class="toc">
+    <summary>📚 Table of Contents</summary>
+    <ul>
+      <li><a href="#intro">Why This Blog Exists</a></li>
+      <li><a href="#big-o">What is Big O?</a></li>
+      <li><a href="#analogy">Real-Life Analogy</a></li>
+      <li><a href="#example">Example: Two Sum</a></li>
+      <li><a href="#cheatsheet">Big O Growth</a></li>
+      <li><a href="#citation">Citation</a></li>
+      <li><a href="#references">References</a></li>
+    </ul>
+  </details>
+
+  <h2 id="intro">Why This Blog Exists</h2>
+  <p><strong>What I’m sipping today:</strong> Cold brew — no matcha today :(</p>
+  <p>
+    I’ve given many interviews — some went great, some didn’t. But if there’s one thing I’ve learned, it’s this:
+    most people don’t struggle with deep AI theory in interviews. They trip on the basics. Like how to loop efficiently. Or what <code>O(n log n)</code> even means.
+  </p>
+  <p>
+    This blog isn’t from an expert. It’s from someone learning — out loud. Because in the “attention era,” quiet learning is underrated. 
+    Welcome to <em>Kargi’s Notebook</em>, where I write and sip at the same time 🍵.
+  </p>
+
+  <h2 id="big-o">What is Big O?</h2>
+  <p>
+    It’s not about math. It’s about how your code performs as input grows. It's how you go from working for 10 users to 10 million.
+  </p>
+  <p><strong>Big O = a performance lens for your algorithms.</strong></p>
+  <ul>
+    <li>Will this solution still work fast for 1M DAUs?</li>
+    <li>Is this brute force or optimized?</li>
+  </ul>
+
+  <h2 id="analogy">Real-Life Analogy</h2>
+  <ul>
+    <li>🟢 <strong>O(1)</strong> → You check Instagram. Instant.</li>
+    <li>🟡 <strong>O(n)</strong> → You ask every person at a party.</li>
+    <li>🔴 <strong>O(n²)</strong> → You ask everyone about everyone. Twice. Why?</li>
+  </ul>
+
+  <h2 id="example">Example: Two Sum</h2>
+  <h3>1. Brute Force (O(n²))</h3>
+  <pre><code>for i in range(len(nums)):
+    for j in range(i+1, len(nums)):
+        if nums[i] + nums[j] == target:
+            return [i, j]</code></pre>
+
+  <h3>2. Optimized with HashMap (O(n))</h3>
+  <pre><code>seen = {}
+for i, num in enumerate(nums):
+    complement = target - num
+    if complement in seen:
+        return [seen[complement], i]
+    seen[num] = i</code></pre>
+
+    <h2 id="cheatsheet">Big O Growth</h2>
+
+    <table style="width: 100%; border-collapse: collapse; margin-top: 1rem;">
+      <thead>
+        <tr style="background-color: var(--card-color); color: var(--text-color);">
+          <th style="padding: 0.6rem; text-align: left;">Complexity</th>
+          <th style="padding: 0.6rem; text-align: left;">Example</th>
+          <th style="padding: 0.6rem; text-align: left;">Growth Pattern</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td style="padding: 0.6rem;"><strong>O(1)</strong></td>
+          <td style="padding: 0.6rem;">Access element</td>
+          <td style="padding: 0.6rem;">☕ sip and done</td>
+        </tr>
+        <tr>
+          <td style="padding: 0.6rem;"><strong>O(log n)</strong></td>
+          <td style="padding: 0.6rem;">Binary Search</td>
+          <td style="padding: 0.6rem;">⬆️ slow climb</td>
+        </tr>
+        <tr>
+          <td style="padding: 0.6rem;"><strong>O(n)</strong></td>
+          <td style="padding: 0.6rem;">For loop</td>
+          <td style="padding: 0.6rem;">📈 steady growth</td>
+        </tr>
+        <tr>
+          <td style="padding: 0.6rem;"><strong>O(n log n)</strong></td>
+          <td style="padding: 0.6rem;">Merge Sort</td>
+          <td style="padding: 0.6rem;">🌲 layered growth</td>
+        </tr>
+        <tr>
+          <td style="padding: 0.6rem;"><strong>O(n²)</strong></td>
+          <td style="padding: 0.6rem;">Nested loops</td>
+          <td style="padding: 0.6rem;">📉 spiral of death</td>
+        </tr>
+        <tr>
+          <td style="padding: 0.6rem;"><strong>O(2ⁿ)</strong></td>
+          <td style="padding: 0.6rem;">Recursion hell</td>
+          <td style="padding: 0.6rem;">☠️ avoid unless necessary</td>
+        </tr>
+      </tbody>
+    </table>
+    
+    <p style="margin-top: 1rem;">More here: <a href="https://www.bigocheatsheet.com/" target="_blank">Big O Cheat Sheet</a></p>
+  <h2 id="citation">Citation</h2>
+  <p>Cite this blog post as:</p>
+
+  <div class="citation-container">
+    <pre id="bibtex" class="cite-box">@article{kargi2025bigO,
+  title   = "Big O Notation: Starting Simple, Staying Sane",
+  author  = "Kargi Chauhan",
+  journal = "kargisnotebook.github.io",
+  year    = "2025",
+  month   = "May",
+  url     = "https://kargichauhan.github.io/kargisnotebook.github.io/posts/Big-O-Notation.html"
+}</pre>
+    <button id="copy-btn">📋 Copy</button>
+  </div>
+
+  <h2 id="references">References</h2>
+  <ol class="refs">
+    <li><a href="https://www.bigocheatsheet.com/" target="_blank">Big O Cheat Sheet</a></li>
+    <li>CLRS: Introduction to Algorithms (Cormen et al.)</li>
+    <li>LeetCode: Two Sum problem <a href="https://leetcode.com/problems/two-sum/" target="_blank">[link]</a></li>
+  </ol>
+
+  <script>
+    const html = document.documentElement;
+    const currentTheme = localStorage.getItem("theme") || "light";
+    html.dataset.theme = currentTheme;
+  
+    const toggle = document.getElementById("theme-toggle");
+    if (toggle) {
+      toggle.textContent = currentTheme === "light" ? "🌙" : "☀️";
+      toggle.onclick = () => {
+        const next = html.dataset.theme === "light" ? "dark" : "light";
+        html.dataset.theme = next;
+        localStorage.setItem("theme", next);
+        toggle.textContent = next === "light" ? "🌙" : "☀️";
+      };
+    }
+  </script>
+
+  <script>
+    const copyBtn = document.getElementById("copy-btn");
+    copyBtn.addEventListener("click", () => {
+      navigator.clipboard.writeText(document.getElementById("bibtex").textContent).then(() => {
+        copyBtn.textContent = "✅ Copied!";
+        setTimeout(() => (copyBtn.textContent = "📋 Copy"), 2000);
+      });
+    });
+  </script>
+</body>
+</html>

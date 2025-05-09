@@ -110,4 +110,28 @@
     font-size: 1rem;
     color: var(--text-color);
   }
+
+
+  table {
+    width: 100%;
+    border-collapse: collapse;
+    margin-top: 1.5rem;
+    background-color: var(--card-color);
+    box-shadow: 0 2px 8px var(--shadow);
+    border-radius: 10px;
+    overflow: hidden;
+  }
+  
+  th, td {
+    padding: 0.8rem;
+    text-align: left;
+    border-bottom: 1px solid var(--shadow);
+  }
+  
+  th {
+    background: var(--card-color);
+    color: var(--text-color);
+    font-weight: 600;
+  }
+  
   
