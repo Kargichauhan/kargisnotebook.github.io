@@ -134,4 +134,30 @@
     font-weight: 600;
   }
   
+  a {
+    color: var(--accent-link, #8ff7a4);
+    text-decoration: none;
+    font-weight: 500;
+  }
   
+  a:hover {
+    text-decoration: underline;
+  }
+  
+  :root {
+    --accent-link: #257e5d;
+  }
+  
+  [data-theme="dark"] {
+    --accent-link: #90ee90; /* light green or pick any bright shade */
+  }
+
+  a {
+    color: var(--accent-link);
+    text-decoration: none;
+    border-bottom: 1px solid transparent;
+    transition: border 0.2s ease;
+  }
+  a:hover {
+    border-bottom: 1px solid var(--accent-link);
+  }
