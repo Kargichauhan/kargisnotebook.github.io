@@ -9,7 +9,21 @@
   <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@400;600&display=swap" rel="stylesheet" />
   <script src="https://cdn.jsdelivr.net/npm/mermaid/dist/mermaid.min.js"></script>
   <script>mermaid.initialize({ startOnLoad: true });</script>
+
   <style>
+    :root[data-theme="light"] {
+      --bg: #f8fff5;
+      --text: #1a1a1a;
+      --card: #ffffff;
+      --meta: #555;
+    }
+    :root[data-theme="dark"] {
+      --bg: #1c1c1c;
+      --text: #f5f5f5;
+      --card: #2a2a2a;
+      --meta: #bbb;
+    }
+
     body {
       max-width: 760px;
       margin: auto;
@@ -21,6 +35,22 @@
       font-size: 1.05rem;
       line-height: 1.7;
     }
+
+    /* Theme toggle button */
+    #theme-toggle {
+      position: fixed;
+      top: 1rem;
+      right: 1rem;
+      background: var(--card);
+      border: none;
+      border-radius: 50%;
+      width: 2.5rem;
+      height: 2.5rem;
+      font-size: 1.2rem;
+      cursor: pointer;
+      box-shadow: 0 2px 6px rgba(0,0,0,0.2);
+    }
+
     h1 { font-size: 2.4rem; margin-bottom: 0.3rem; }
     .meta { font-size: 0.9rem; color: var(--meta); margin-bottom: 1rem; }
     .sipping { font-size: 1rem; margin-bottom: 1.5rem; font-style: italic; }
@@ -35,16 +65,21 @@
     .refs li { margin-bottom: 0.6rem; }
     a { color: #8ff7a4; }
     a:hover { text-decoration: underline; }
-    :root[data-theme="light"] { --bg: #f8fff5; --text: #1a1a1a; --card: #ffffff; --meta: #555; }
-    :root[data-theme="dark"]  { --bg: #1c1c1c; --text: #f5f5f5; --card: #2a2a2a; --meta: #bbb; }
+    .citation-container { position: relative; margin-top: 1rem; }
+    .cite-box { background: #2b2b2b; padding: 1rem; border-radius: 8px; white-space: pre-wrap; font-family: monospace; font-size: 0.9rem; color: #d0f7cf; }
+    #copy-btn { position: absolute; top: 10px; right: 10px; background-color: #4caf50; color: white; border: none; padding: 0.4rem 0.8rem; border-radius: 6px; cursor: pointer; font-size: 0.8rem; }
+    #copy-btn:hover { background-color: #45a049; }
   </style>
 </head>
 
 <body>
-    <h1>Build Rich-Context AI Apps with Anthropic: Mastering MCP</h1>
-    <p class="meta">Date: May 17, 2025 • Estimated Reading Time: 15 min • Author: Kargi Chauhan</p>
-    <p class="sipping">☕️ Today I’m sipping: <em>Cortado</em></p>
-    <p>I was going through this lecture and jotting down my notes. I figured, why not share my learning journey publicly? While I won't cover every detail here, I’ll provide clear, concise explanations to help you understand the core concepts. I will note in my to-do's to make it more detailed next time.</p>
+  <!-- Theme toggle -->
+  <button id="theme-toggle">🌙</button>
+
+  <h1>Build Rich-Context AI Apps with Anthropic: Mastering MCP</h1>
+  <p class="meta">Date: May 17, 2025 • Estimated Reading Time: 15 min • Author: Kargi Chauhan</p>
+  <p class="sipping">☕️ Today I’m sipping: <em>Cortado</em></p>
+  <p>I was going through this lecture and jotting down my notes. I figured, why not share my learning journey publicly? While I won't cover every detail here, I’ll provide clear, concise explanations to help you understand the core concepts. I will note in my to-dos to make it more detailed next time.</p>
   
   <details class="toc">
     <summary>Table of Contents</summary>
@@ -59,6 +94,7 @@
       <li><a href="#workflow">A Step-by-Step Journey</a></li>
       <li><a href="#deployment">Deploying in the Real World</a></li>
       <li><a href="#conclusion">Wrapping Up</a></li>
+      <li><a href="#citation">Citation</a></li>
       <li><a href="#references">References</a></li>
     </ul>
   </details>
@@ -67,7 +103,7 @@
   <p>
     Imagine you have a super-smart robot friend that can do many tasks: summarize a long story, fetch the weather,
     or send a customized email. But to ask your robot friend to do these, you need a simple way to say “Hey,
-    do this!” that's exactly what <strong>MCP (Model Context Protocol)</strong> provides.
+    do this!”—that’s exactly what <strong>MCP (Model Context Protocol)</strong> provides.
   </p>
 
   <h2 id="everyday-analogy">An Everyday Analogy</h2>
@@ -75,12 +111,12 @@
     Think of MCP as the rules for ordering pizza:
   </p>
   <ul>
-    <li><strong>Menu Items</strong> (Tools): You see “Margherita” or “Pepperoni” and pick one just like calling
+    <li><strong>Menu Items</strong> (Tools): You see “Margherita” or “Pepperoni” and pick one, just like calling
       <code>translate(text, lang)</code> to translate text.</li>
-    <li><strong>Spice Rack</strong> (Resources): You grab an ingredient like “oregano” or “olive oil” similar
+    <li><strong>Spice Rack</strong> (Resources): You grab an ingredient like “oregano” or “olive oil,” similar
       to reading stock prices or weather data.</li>
-    <li><strong>Recipe Card</strong> (Prompt Templates): You follow a fill-in-the-blank recipe just like plugging
-      your information into an email template.</li>
+    <li><strong>Recipe Card</strong> (Prompt Templates): You follow a fill-in-the-blank recipe, just like plugging
+      in your information into an email template.</li>
   </ul>
 
   <h2 id="mindmap">Quick Mind Map</h2>
@@ -117,9 +153,7 @@
   </p>
 
   <h2 id="primitives">Key Building Blocks</h2>
-  <p>
-    In code, these building blocks are declared with Python decorators:
-  </p>
+  <p>In code, these building blocks are declared with Python decorators:</p>
   <pre><code>from anthropic_mcp import MCPServer, tool, resource, prompt
 
 server = MCPServer()
@@ -142,9 +176,7 @@ def email_template(name: str) -> str:
 server.serve()</code></pre>
 
   <h2 id="protocol">How They Talk</h2>
-  <p>
-    Every message follows a simple JSON format:
-  </p>
+  <p>Every message follows a simple JSON format:</p>
   <pre><code>{
   "id": "1234",
   "kind": "invoke",     // ask to do something
@@ -155,12 +187,10 @@ server.serve()</code></pre>
 { "kind": "return", "output": { "summary": "A fairy tale." } }</code></pre>
 
   <h2 id="transports">The Roads They Travel</h2>
-  <p>
-    Your requests can ride different roads:
-  </p>
+  <p>Your requests can ride different roads:</p>
   <ul>
     <li><strong>stdio</strong>: like shouting to a friend in the same room (stdin/stdout).</li>
-    <li><strong>HTTP + SSE</strong>: like sending a letter and getting updates by postcard (server-sent events).</li>
+    <li><strong>HTTP + SSE</strong>: like sending a letter and getting updates by postcard.</li>
     <li><strong>Streamable HTTP</strong>: like a phone call that streams updates one after another.</li>
   </ul>
 
@@ -174,9 +204,6 @@ server.serve()</code></pre>
   </p>
 
   <h2 id="deployment">Deploying in the Real World</h2>
-  <p>
-    When you’re ready to serve your pizza shop:
-  </p>
   <ul>
     <li>Use HTTPS/TLS and secret API keys (like a locked door).</li>
     <li>Scale horizontally—run multiple kitchens behind a load balancer.</li>
@@ -188,11 +215,6 @@ server.serve()</code></pre>
     MCP empowers you to craft robust AI apps by combining LLM intelligence with real-world tooling.
     From schema discovery to error handling, security, and scaling, you now have the full recipe to
     build, deploy, and maintain conversational AI pipelines at scale.
-
-    
-
-
-
   </p>
 
   <h2 id="citation">Citation</h2>
@@ -218,10 +240,28 @@ server.serve()</code></pre>
   </ol>
 
   <script>
-    document.getElementById('copy-btn')?.addEventListener('click', () => {
-      navigator.clipboard.writeText(document.getElementById('bibtex').textContent || '');
-      document.getElementById('copy-btn').textContent = '✅ Copied!';
-      setTimeout(() => document.getElementById('copy-btn').textContent = '📋 Copy', 2000);
+    // Initialize theme
+    const htmlEl = document.documentElement;
+    const savedTheme = localStorage.getItem('theme') || 'light';
+    htmlEl.dataset.theme = savedTheme;
+
+    const toggleBtn = document.getElementById('theme-toggle');
+    toggleBtn.textContent = savedTheme === 'light' ? '🌙' : '☀️';
+
+    toggleBtn.addEventListener('click', () => {
+      const nextTheme = htmlEl.dataset.theme === 'light' ? 'dark' : 'light';
+      htmlEl.dataset.theme = nextTheme;
+      localStorage.setItem('theme', nextTheme);
+      toggleBtn.textContent = nextTheme === 'light' ? '🌙' : '☀️';
+    });
+
+    // Copy citation
+    document.getElementById('copy-btn').addEventListener('click', () => {
+      navigator.clipboard.writeText(document.getElementById('bibtex').textContent).then(() => {
+        const btn = document.getElementById('copy-btn');
+        btn.textContent = '✅ Copied!';
+        setTimeout(() => btn.textContent = '📋 Copy', 2000);
+      });
     });
   </script>
 </body>

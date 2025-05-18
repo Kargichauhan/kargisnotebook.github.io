@@ -2,11 +2,11 @@
 <html lang="en" data-theme="light">
 <head>
   <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
   <title>Neurosymbolic AI: When Logic Meets Learning</title>
   <link rel="stylesheet" href="../style.css" />
   <link rel="icon" href="../favicon.ico" type="image/x-icon" />
-  <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@400;600&display=swap" rel="stylesheet" />
+  <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@400;600&display=swap" rel="stylesheet"/>
   <style>
     body {
       max-width: 760px;
@@ -19,17 +19,8 @@
       font-size: 1.05rem;
       line-height: 1.7;
     }
-
-    h1 {
-      font-size: 2.2rem;
-      margin-bottom: 0.5rem;
-    }
-
-    .meta {
-      font-size: 0.9rem;
-      color: var(--meta);
-      margin-bottom: 2rem;
-    }
+    h1 { font-size: 2.2rem; margin-bottom: 0.5rem; }
+    .meta { font-size: 0.9rem; color: var(--meta); margin-bottom: 2rem; }
 
     details.toc {
       background: var(--card);
@@ -37,47 +28,26 @@
       border-radius: 10px;
       margin-bottom: 2rem;
     }
-
     details.toc a {
       color: #74e474;
       text-decoration: none;
     }
-
     details.toc a:hover {
       text-decoration: underline;
     }
 
-    h2 {
-      color: #7bed9f;
-      margin-top: 2.5rem;
-    }
-
-    ul {
-      padding-left: 1.4rem;
-    }
-
-    code {
+    h2 { color: #7bed9f; margin-top: 2.5rem; }
+    pre, code {
       background: #2e2e2e;
       padding: 0.25rem 0.4rem;
       border-radius: 5px;
       color: #b8f5c8;
     }
-
     pre {
-      background: #2e2e2e;
       padding: 1rem;
-      border-radius: 8px;
       overflow-x: auto;
-      font-family: monospace;
-      font-size: 0.9rem;
-      color: #d5f9dc;
     }
-
-    .citation-container {
-      position: relative;
-      margin-top: 1rem;
-    }
-
+    .citation-container { position: relative; margin-top: 1rem; }
     .cite-box {
       background: #2b2b2b;
       padding: 1rem;
@@ -87,7 +57,6 @@
       font-size: 0.9rem;
       color: #d0f7cf;
     }
-
     #copy-btn {
       position: absolute;
       top: 10px;
@@ -100,21 +69,23 @@
       cursor: pointer;
       font-size: 0.8rem;
     }
+    #copy-btn:hover { background-color: #45a049; }
+    .refs li { margin-bottom: 0.6rem; }
+    a { color: #8ff7a4; }
+    a:hover { text-decoration: underline; }
 
-    #copy-btn:hover {
-      background-color: #45a049;
-    }
-
-    .refs li {
-      margin-bottom: 0.6rem;
-    }
-
-    a {
-      color: #8ff7a4;
-    }
-
-    a:hover {
-      text-decoration: underline;
+    #theme-toggle {
+      position: fixed;
+      top: 1rem;
+      right: 1rem;
+      width: 2.5rem;
+      height: 2.5rem;
+      border: none;
+      border-radius: 50%;
+      background: var(--card);
+      font-size: 1.2rem;
+      cursor: pointer;
+      box-shadow: 0 2px 6px rgba(0,0,0,0.2);
     }
 
     :root[data-theme="light"] {
@@ -123,7 +94,6 @@
       --card: #ffffff;
       --meta: #555;
     }
-
     :root[data-theme="dark"] {
       --bg: #1c1c1c;
       --text: #f5f5f5;
@@ -132,56 +102,55 @@
     }
   </style>
 </head>
-
 <body>
-  <h1> Neurosymbolic AI: When Logic Meets Learning</h1>
-  <p class="meta">Date: May 1, 2025 • Estimated Reading Time: 10 min • Author: Kargi Chauhan</p>
+  <button id="theme-toggle">🌙</button>
+
+  <h1>Neurosymbolic AI: When Logic Meets Learning</h1>
+  <p class="meta">Date: May 1, 2025 • Estimated Reading Time: 15 min • Author: Kargi Chauhan</p>
 
   <details class="toc">
-    <summary> Table of Contents</summary>
+    <summary>Table of Contents</summary>
     <ul>
-      <li><a href="#what-is">What is Neurosymbolic AI?</a></li>
+      <li><a href="#what-is">What Is Neurosymbolic AI?</a></li>
       <li><a href="#why-it-matters">Why It Matters</a></li>
-      <li><a href="#ltn">Example: Logic Tensor Networks</a></li>
-      <li><a href="#future">Challenges and Future</a></li>
+      <li><a href="#example">A Closer Look at Logic Tensor Networks</a></li>
+      <li><a href="#challenges-future">Challenges and What’s Next</a></li>
       <li><a href="#citation">Citation</a></li>
       <li><a href="#references">References</a></li>
     </ul>
   </details>
 
-  <h2 id="what-is">What is Neurosymbolic AI?</h2>
+  <h2 id="what-is">What Is Neurosymbolic AI?</h2>
   <p>
-    Neurosymbolic AI is a hybrid approach that combines symbolic reasoning (like logic rules and ontologies) with neural network-based learning (like transformers or CNNs). 
-    It aims to bring together the strengths of <strong>structure</strong> and <strong>data-driven generalization</strong>.
+    Neurosymbolic AI brings together two very different worlds. On one side, we have neural networks that learn from raw data, finding patterns in images, text, or audio without any explicit rules. On the other side, we have symbolic systems built on logic and structured knowledge, which can explain their decisions but struggle to handle noisy inputs. Neurosymbolic AI combines these strengths, letting a single system learn from examples while still respecting logical constraints and human-understandable rules.
   </p>
 
   <h2 id="why-it-matters">Why It Matters</h2>
   <p>
-    Purely neural models lack <strong>explainability</strong>, and symbolic systems lack <strong>flexibility</strong>. Neurosymbolic systems can reason over facts and learn from data — bridging the gap between <code>deduction</code> and <code>pattern recognition</code>.
+    Purely neural approaches often feel like a black box: they can recognize faces or translate languages, but it’s hard to say how or why. Purely symbolic approaches can explain every step, yet they break down when the data is messy or incomplete. By fusing both, we get systems that can learn flexibility from data and still give us a clear, rule-based explanation when it matters—for example, in medical diagnosis, where a doctor needs to trust the reasoning behind an AI’s suggestion.
+  </p>
+  <p>
+    Neurosymbolic models also excel at compositional tasks. Imagine asking a robot not just to “pick up the red block,” but to understand a sequence like “place the red block on the blue one, then move the stack to the corner.” The symbolic layer handles the plan, while the neural layer handles perception and motor control.
   </p>
 
-  <h2 id="ltn">Example: Logic Tensor Networks</h2>
+  <h2 id="example">A Closer Look at Logic Tensor Networks</h2>
   <p>
-    LTNs integrate first-order logic into deep learning by relaxing logical operators using continuous semantics. For instance, you can encode:
+    One of the most influential neurosymbolic frameworks is the Logic Tensor Network (LTN). In an LTN, logical statements are translated into differentiable loss functions. Take the rule “every human is mortal.” In classical logic, that reads ∀x: Human(x) → Mortal(x). In an LTN, we measure how much a learned embedding of “human” and “mortal” violate this rule, and we add that to our training loss.
   </p>
   <pre><code>∀x: Human(x) → Mortal(x)</code></pre>
   <p>
-    and train your model to learn embeddings that <strong>satisfy these constraints</strong> while fitting the data.
+    During training, the network adjusts so that the numeric representations of “Human” and “Mortal” satisfy this implication as closely as possible. This gives us models that not only fit the data but also respect the logical structure we care about.
   </p>
 
-  <h2 id="future">Challenges and Future</h2>
+  <h2 id="challenges-future">Challenges and What’s Next</h2>
   <p>
-    While promising, neurosymbolic AI is still under research. Open questions include:
+    Neurosymbolic AI is still a young field, and there are open questions everywhere. Scaling logic engines to handle real-world, large-scale data remains difficult, because the number of possible logical combinations can explode. We also need better ways to translate between discrete symbols and continuous vectors without losing meaning.
   </p>
-  <ul>
-    <li>How to scale logic reasoning to real-world datasets?</li>
-    <li>How to balance interpretability and model capacity?</li>
-    <li>Can LLMs be guided by symbolic priors?</li>
-  </ul>
+  <p>
+    Looking ahead, researchers are exploring end-to-end differentiable theorem provers, new methods for automatically discovering symbolic rules from data, and hardware accelerators designed for mixed symbolic–neural workloads. The dream is a system that learns new rules on the fly, explains its reasoning to humans, and adapts to entirely novel situations.
+  </p>
 
   <h2 id="citation">Citation</h2>
-  <p>Cite this blog post as:</p>
-
   <div class="citation-container">
     <pre id="bibtex" class="cite-box">@article{kargi2025neurosymbolic,
   title   = "Neurosymbolic AI: When Logic Meets Learning",
@@ -189,42 +158,56 @@
   journal = "kargisnotebook.github.io",
   year    = "2025",
   month   = "May",
-  url     = "https://kargichauhan.github.io/kargisnotebook.github.io/posts/neurosymbolic-ai.html"
+  url     = "https://kargichauhan.github.io/posts/neurosymbolic-ai.html"
 }</pre>
     <button id="copy-btn">📋 Copy</button>
   </div>
 
   <h2 id="references">References</h2>
   <ol class="refs">
-    <li>Garcez, A. d. et al. "Neurosymbolic AI: The Third Wave." <em>Communications of the ACM</em> (2020)</li>
-    <li>Serafini, L., & Garcez, A. "Logic Tensor Networks: Deep Learning and Logical Reasoning." <em>arXiv:1606.04422</em></li>
-    <li>Besold et al. "Neural-Symbolic Learning and Reasoning." <em>Springer</em> (2017)</li>
-    <li>Marcus, G. "The Next Decade in AI: Why Common Sense Matters." <em>arXiv:2002.06177</em></li>
+    <li>
+      Besold, T. R., d’Avila Garcez, A., Bader, S., Bowman, H., Domingos, P., Hitzler, P., … &amp; Zaverucha, G. 
+      Neural‐Symbolic Learning and Reasoning: A Survey and Interpretation. <em>ArXiv</em>, 2017.
+    </li>
+    <li>
+      Serafini, L. &amp; d’Avila Garcez, A. Logic Tensor Networks: Deep Learning and Logical Reasoning. 
+      <em>ArXiv:1606.04422</em>, 2016.
+    </li>
+    <li>
+      Manhaeve, R., Dumancic, S., Kimmig, A., Demeester, T., &amp; De Raedt, L. DeepProbLog: Neural Probabilistic Logic Programming. 
+      <em>NeurIPS</em>, 2018.
+    </li>
+    <li>
+      Mao, J., Gan, C., Kohli, P., Tenenbaum, J. B., &amp; Wu, J. Neuro‐Symbolic Concept Learner: Interpreting Scenes, Words, and Sentences from Natural Supervision. 
+      <em>ICLR</em>, 2019.
+    </li>
+    <li>
+      Marcus, G. The Next Decade in AI: Why Common Sense Matters. <em>ArXiv:2002.06177</em>, 2020.
+    </li>
   </ol>
 
   <script>
-    // Theme toggle sync
-    const html = document.documentElement;
-    const current = localStorage.getItem("theme") || "light";
-    html.dataset.theme = current;
+    // Initialize theme
+    const htmlEl = document.documentElement;
+    const savedTheme = localStorage.getItem('theme') || 'light';
+    htmlEl.dataset.theme = savedTheme;
 
-    const toggle = document.getElementById("theme-toggle");
-    if (toggle) {
-      toggle.textContent = current === "light" ? "🌙" : "☀️";
-      toggle.onclick = () => {
-        const next = html.dataset.theme === "light" ? "dark" : "light";
-        html.dataset.theme = next;
-        localStorage.setItem("theme", next);
-        toggle.textContent = next === "light" ? "🌙" : "☀️";
-      };
-    }
+    // Toggle button
+    const toggleBtn = document.getElementById('theme-toggle');
+    toggleBtn.textContent = savedTheme === 'light' ? '🌙' : '☀️';
+    toggleBtn.addEventListener('click', () => {
+      const next = htmlEl.dataset.theme === 'light' ? 'dark' : 'light';
+      htmlEl.dataset.theme = next;
+      localStorage.setItem('theme', next);
+      toggleBtn.textContent = next === 'light' ? '🌙' : '☀️';
+    });
 
     // Copy BibTeX
-    const copyBtn = document.getElementById("copy-btn");
-    copyBtn.addEventListener("click", () => {
-      navigator.clipboard.writeText(document.getElementById("bibtex").textContent).then(() => {
-        copyBtn.textContent = "✅ Copied!";
-        setTimeout(() => (copyBtn.textContent = "📋 Copy"), 2000);
+    document.getElementById('copy-btn').addEventListener('click', () => {
+      navigator.clipboard.writeText(document.getElementById('bibtex').textContent).then(() => {
+        const btn = document.getElementById('copy-btn');
+        btn.textContent = '✅ Copied!';
+        setTimeout(() => btn.textContent = '📋 Copy', 2000);
       });
     });
   </script>

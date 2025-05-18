@@ -7,7 +7,24 @@
   <link rel="stylesheet" href="../style.css" />
   <link rel="icon" href="../favicon.ico" type="image/x-icon" />
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600&display=swap" rel="stylesheet" />
+
   <style>
+    /* theme variables */
+    :root[data-theme="light"] {
+      --bg-color: #f8fff5;
+      --text-color: #1a1a1a;
+      --card-color: #ffffff;
+      --meta-color: #555;
+      --shadow: rgba(0,0,0,0.1);
+    }
+    :root[data-theme="dark"] {
+      --bg-color: #1c1c1c;
+      --text-color: #f5f5f5;
+      --card-color: #2a2a2a;
+      --meta-color: #bbb;
+      --shadow: rgba(0,0,0,0.3);
+    }
+
     body {
       max-width: 760px;
       margin: auto;
@@ -17,6 +34,22 @@
       color: var(--text-color);
       font-size: 1.05rem;
       line-height: 1.7;
+      transition: background 0.3s, color 0.3s;
+    }
+
+    /* theme toggle button */
+    #theme-toggle {
+      position: fixed;
+      top: 1rem;
+      right: 1rem;
+      width: 2.5rem;
+      height: 2.5rem;
+      border: none;
+      border-radius: 50%;
+      background: var(--card-color);
+      font-size: 1.2rem;
+      cursor: pointer;
+      box-shadow: 0 2px 6px var(--shadow);
     }
 
     h1 {
@@ -42,7 +75,6 @@
       color: #74e474;
       text-decoration: none;
     }
-
     details.toc a:hover {
       text-decoration: underline;
     }
@@ -90,14 +122,17 @@
       cursor: pointer;
       font-size: 0.8rem;
     }
-
     #copy-btn:hover {
       background-color: #45a049;
     }
+
   </style>
 </head>
 
 <body>
+  <!-- theme toggle -->
+  <button id="theme-toggle">🌙</button>
+
   <h1>15 LeetCode Questions to Build Core Intuition</h1>
   <p class="meta">Date: May 9, 2025 • Estimated Reading Time: 5 min • Author: Kargi Chauhan</p>
 
@@ -124,7 +159,7 @@
   <h2 id="list">The 15 Core Questions</h2>
 
   <p>
-  These aren’t just problems. They’re mental models. Each one trains a different part of your thinking — from pattern recognition to recursion, from constraints to creativity. If you can deeply understand these, you’re not memorizing. You’re learning how to think like an engineer.
+    These aren’t just problems. They’re mental models. Each one trains a different part of your thinking — from pattern recognition to recursion, from constraints to creativity. If you can deeply understand these, you’re not memorizing. You’re learning how to think like an engineer.
   </p>
   
   <section style="margin-top: 2rem;">
@@ -173,10 +208,9 @@
   </section>
   
   <p style="margin-top: 1.5rem;">
-  Every one of these will get its own deep dive — not just the solution, but the story behind the solution. The kind of understanding that sticks. The kind that shows up when it matters.
+    Every one of these will get its own deep dive — not just the solution, but the story behind the solution. The kind of understanding that sticks. The kind that shows up when it matters.
   </p>
   
-
   <h2 id="citation">Citation</h2>
   <p>Cite this blog post as:</p>
 
@@ -193,26 +227,26 @@
   </div>
 
   <script>
-    const html = document.documentElement;
-    const currentTheme = localStorage.getItem("theme") || "light";
-    html.dataset.theme = currentTheme;
+    // theme toggle logic
+    const htmlEl = document.documentElement;
+    const savedTheme = localStorage.getItem('theme') || 'light';
+    htmlEl.dataset.theme = savedTheme;
 
-    const toggle = document.getElementById("theme-toggle");
-    if (toggle) {
-      toggle.textContent = currentTheme === "light" ? "🌙" : "☀️";
-      toggle.onclick = () => {
-        const next = html.dataset.theme === "light" ? "dark" : "light";
-        html.dataset.theme = next;
-        localStorage.setItem("theme", next);
-        toggle.textContent = next === "light" ? "🌙" : "☀️";
-      };
-    }
+    const toggleBtn = document.getElementById('theme-toggle');
+    toggleBtn.textContent = savedTheme === 'light' ? '🌙' : '☀️';
+    toggleBtn.addEventListener('click', () => {
+      const next = htmlEl.dataset.theme === 'light' ? 'dark' : 'light';
+      htmlEl.dataset.theme = next;
+      localStorage.setItem('theme', next);
+      toggleBtn.textContent = next === 'light' ? '🌙' : '☀️';
+    });
 
-    const copyBtn = document.getElementById("copy-btn");
-    copyBtn.addEventListener("click", () => {
-      navigator.clipboard.writeText(document.getElementById("bibtex").textContent).then(() => {
-        copyBtn.textContent = "✅ Copied!";
-        setTimeout(() => (copyBtn.textContent = "📋 Copy"), 2000);
+    // copy citation logic
+    document.getElementById('copy-btn').addEventListener('click', () => {
+      navigator.clipboard.writeText(document.getElementById('bibtex').textContent).then(() => {
+        const btn = document.getElementById('copy-btn');
+        btn.textContent = '✅ Copied!';
+        setTimeout(() => btn.textContent = '📋 Copy', 2000);
       });
     });
   </script>

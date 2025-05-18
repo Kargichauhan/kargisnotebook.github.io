@@ -7,7 +7,24 @@
   <link rel="stylesheet" href="../style.css" />
   <link rel="icon" href="../favicon.ico" type="image/x-icon" />
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600&display=swap" rel="stylesheet" />
+
   <style>
+    /* theme variables */
+    :root[data-theme="light"] {
+      --bg-color: #f8fff5;
+      --text-color: #1a1a1a;
+      --card-color: #ffffff;
+      --meta-color: #555;
+      --shadow: rgba(0,0,0,0.1);
+    }
+    :root[data-theme="dark"] {
+      --bg-color: #1c1c1c;
+      --text-color: #f5f5f5;
+      --card-color: #2a2a2a;
+      --meta-color: #bbb;
+      --shadow: rgba(0,0,0,0.3);
+    }
+
     body {
       max-width: 760px;
       margin: auto;
@@ -17,6 +34,22 @@
       color: var(--text-color);
       font-size: 1.05rem;
       line-height: 1.7;
+      transition: background 0.3s, color 0.3s;
+    }
+
+    /* theme toggle button */
+    #theme-toggle {
+      position: fixed;
+      top: 1rem;
+      right: 1rem;
+      width: 2.5rem;
+      height: 2.5rem;
+      border: none;
+      border-radius: 50%;
+      background: var(--card-color);
+      font-size: 1.2rem;
+      cursor: pointer;
+      box-shadow: 0 2px 6px var(--shadow);
     }
 
     h1 {
@@ -37,12 +70,14 @@
       margin-bottom: 2rem;
       box-shadow: 0 4px 10px var(--shadow);
     }
-
+    details.toc summary {
+      cursor: pointer;
+      font-weight: 600;
+    }
     details.toc a {
       color: #74e474;
       text-decoration: none;
     }
-
     details.toc a:hover {
       text-decoration: underline;
     }
@@ -100,7 +135,6 @@
       cursor: pointer;
       font-size: 0.8rem;
     }
-
     #copy-btn:hover {
       background-color: #45a049;
     }
@@ -108,6 +142,9 @@
 </head>
 
 <body>
+  <!-- theme toggle -->
+  <button id="theme-toggle">🌙</button>
+
   <h1>Big O Notation</h1>
   <p class="meta">Date: May 6, 2025 • Estimated Reading Time: 6 min • Author: Kargi Chauhan</p>
 
@@ -167,54 +204,28 @@ for i, num in enumerate(nums):
         return [seen[complement], i]
     seen[num] = i</code></pre>
 
-    <h2 id="cheatsheet">Big O Growth</h2>
+  <h2 id="cheatsheet">Big O Growth</h2>
+  <table style="width:100%; border-collapse:collapse; margin-top:1rem;">
+    <thead>
+      <tr style="background:var(--card-color); color:var(--text-color);">
+        <th style="padding:0.6rem; text-align:left;">Complexity</th>
+        <th style="padding:0.6rem; text-align:left;">Example</th>
+        <th style="padding:0.6rem; text-align:left;">Growth Pattern</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr><td style="padding:0.6rem;"><strong>O(1)</strong></td><td style="padding:0.6rem;">Access element</td><td style="padding:0.6rem;">☕ sip and done</td></tr>
+      <tr><td style="padding:0.6rem;"><strong>O(log n)</strong></td><td style="padding:0.6rem;">Binary Search</td><td style="padding:0.6rem;">⬆️ slow climb</td></tr>
+      <tr><td style="padding:0.6rem;"><strong>O(n)</strong></td><td style="padding:0.6rem;">For loop</td><td style="padding:0.6rem;">📈 steady growth</td></tr>
+      <tr><td style="padding:0.6rem;"><strong>O(n log n)</strong></td><td style="padding:0.6rem;">Merge Sort</td><td style="padding:0.6rem;">🌲 layered growth</td></tr>
+      <tr><td style="padding:0.6rem;"><strong>O(n²)</strong></td><td style="padding:0.6rem;">Nested loops</td><td style="padding:0.6rem;">📉 spiral of death</td></tr>
+      <tr><td style="padding:0.6rem;"><strong>O(2ⁿ)</strong></td><td style="padding:0.6rem;">Recursion hell</td><td style="padding:0.6rem;">☠️ avoid unless necessary</td></tr>
+    </tbody>
+  </table>
+  <p style="margin-top:1rem;">More here: <a href="https://www.bigocheatsheet.com/" target="_blank">Big O Cheat Sheet</a></p>
 
-    <table style="width: 100%; border-collapse: collapse; margin-top: 1rem;">
-      <thead>
-        <tr style="background-color: var(--card-color); color: var(--text-color);">
-          <th style="padding: 0.6rem; text-align: left;">Complexity</th>
-          <th style="padding: 0.6rem; text-align: left;">Example</th>
-          <th style="padding: 0.6rem; text-align: left;">Growth Pattern</th>
-        </tr>
-      </thead>
-      <tbody>
-        <tr>
-          <td style="padding: 0.6rem;"><strong>O(1)</strong></td>
-          <td style="padding: 0.6rem;">Access element</td>
-          <td style="padding: 0.6rem;">☕ sip and done</td>
-        </tr>
-        <tr>
-          <td style="padding: 0.6rem;"><strong>O(log n)</strong></td>
-          <td style="padding: 0.6rem;">Binary Search</td>
-          <td style="padding: 0.6rem;">⬆️ slow climb</td>
-        </tr>
-        <tr>
-          <td style="padding: 0.6rem;"><strong>O(n)</strong></td>
-          <td style="padding: 0.6rem;">For loop</td>
-          <td style="padding: 0.6rem;">📈 steady growth</td>
-        </tr>
-        <tr>
-          <td style="padding: 0.6rem;"><strong>O(n log n)</strong></td>
-          <td style="padding: 0.6rem;">Merge Sort</td>
-          <td style="padding: 0.6rem;">🌲 layered growth</td>
-        </tr>
-        <tr>
-          <td style="padding: 0.6rem;"><strong>O(n²)</strong></td>
-          <td style="padding: 0.6rem;">Nested loops</td>
-          <td style="padding: 0.6rem;">📉 spiral of death</td>
-        </tr>
-        <tr>
-          <td style="padding: 0.6rem;"><strong>O(2ⁿ)</strong></td>
-          <td style="padding: 0.6rem;">Recursion hell</td>
-          <td style="padding: 0.6rem;">☠️ avoid unless necessary</td>
-        </tr>
-      </tbody>
-    </table>
-    
-    <p style="margin-top: 1rem;">More here: <a href="https://www.bigocheatsheet.com/" target="_blank">Big O Cheat Sheet</a></p>
   <h2 id="citation">Citation</h2>
   <p>Cite this blog post as:</p>
-
   <div class="citation-container">
     <pre id="bibtex" class="cite-box">@article{kargi2025bigO,
   title   = "Big O Notation: Starting Simple, Staying Sane",
@@ -222,7 +233,7 @@ for i, num in enumerate(nums):
   journal = "kargisnotebook.github.io",
   year    = "2025",
   month   = "May",
-  url     = "https://kargichauhan.github.io/kargisnotebook.github.io/posts/Big-O-Notation.html"
+  url     = "https://kargichauhan.github.io/posts/Big-O-Notation.html"
 }</pre>
     <button id="copy-btn">📋 Copy</button>
   </div>
@@ -235,28 +246,26 @@ for i, num in enumerate(nums):
   </ol>
 
   <script>
-    const html = document.documentElement;
-    const currentTheme = localStorage.getItem("theme") || "light";
-    html.dataset.theme = currentTheme;
-  
-    const toggle = document.getElementById("theme-toggle");
-    if (toggle) {
-      toggle.textContent = currentTheme === "light" ? "🌙" : "☀️";
-      toggle.onclick = () => {
-        const next = html.dataset.theme === "light" ? "dark" : "light";
-        html.dataset.theme = next;
-        localStorage.setItem("theme", next);
-        toggle.textContent = next === "light" ? "🌙" : "☀️";
-      };
-    }
-  </script>
+    // theme toggle logic
+    const htmlEl = document.documentElement;
+    const saved = localStorage.getItem('theme') || 'light';
+    htmlEl.dataset.theme = saved;
 
-  <script>
-    const copyBtn = document.getElementById("copy-btn");
-    copyBtn.addEventListener("click", () => {
-      navigator.clipboard.writeText(document.getElementById("bibtex").textContent).then(() => {
-        copyBtn.textContent = "✅ Copied!";
-        setTimeout(() => (copyBtn.textContent = "📋 Copy"), 2000);
+    const toggle = document.getElementById('theme-toggle');
+    toggle.textContent = saved === 'light' ? '🌙' : '☀️';
+    toggle.addEventListener('click', () => {
+      const next = htmlEl.dataset.theme === 'light' ? 'dark' : 'light';
+      htmlEl.dataset.theme = next;
+      localStorage.setItem('theme', next);
+      toggle.textContent = next === 'light' ? '🌙' : '☀️';
+    });
+
+    // copy citation logic
+    document.getElementById('copy-btn').addEventListener('click', () => {
+      navigator.clipboard.writeText(document.getElementById('bibtex').textContent).then(() => {
+        const btn = document.getElementById('copy-btn');
+        btn.textContent = '✅ Copied!';
+        setTimeout(() => btn.textContent = '📋 Copy', 2000);
       });
     });
   </script>
