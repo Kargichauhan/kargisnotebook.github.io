@@ -1,0 +1,334 @@
+<!DOCTYPE html>
+<html lang="en" data-theme="light">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>AlphaEvolve: The AI That Rewrites Code and Redefines Discovery</title>
+  <link rel="stylesheet" href="../style.css" />
+  <link rel="icon" href="../favicon.ico" type="image/x-icon" />
+  <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@400;600&display=swap" rel="stylesheet"/>
+  <script src="https://cdn.jsdelivr.net/npm/mermaid@10.9.1/dist/mermaid.min.js"></script>
+  <script>
+    mermaid.initialize({ startOnLoad: true, theme: 'neutral' });
+  </script>
+  <style>
+    body {
+      max-width: 760px;
+      margin: auto;
+      padding: 2.5rem 1rem;
+      font-family: 'Outfit', sans-serif;
+      background-color: var(--bg);
+      color: var(--text);
+      transition: background 0.3s ease, color 0.3s ease;
+      font-size: 1.05rem;
+      line-height: 1.7;
+    }
+    h1 { font-size: 2.2rem; margin-bottom: 0.5rem; }
+    .meta { font-size: 0.9rem; color: var(--meta); margin-bottom: 2rem; }
+
+    details.toc {
+      background: var(--card);
+      padding: 1rem;
+      border-radius: 10px;
+      margin-bottom: 2rem;
+    }
+    details.toc a {
+      color: #1b821b;
+      text-decoration: none;
+    }
+    details.toc a:hover {
+      text-decoration: underline;
+    }
+
+    h2 { color: #0e8d36; margin-top: 2.5rem; }
+    pre, code {
+      background: #2e2e2e;
+      padding: 0.25rem 0.4rem;
+      border-radius: 5px;
+      color: #b8f5c8;
+    }
+    pre {
+      padding: 1rem;
+      overflow-x: auto;
+    }
+    .citation-container { position: relative; margin-top: 1rem; }
+    .cite-box {
+      background: #2b2b2b;
+      padding: 1rem;
+      border-radius: 8px;
+      white-space: pre-wrap;
+      font-family: monospace;
+      font-size: 0.9rem;
+      color: #c3ebc3;
+    }
+    #copy-btn {
+      position: absolute;
+      top: 10px;
+      right: 10px;
+      background-color: #349037;
+      color: white;
+      border: none;
+      padding: 0.4rem 0.8rem;
+      border-radius: 6px;
+      cursor: pointer;
+      font-size: 0.8rem;
+    }
+    #copy-btn:hover { background-color: #45a049; }
+    .refs li { margin-bottom: 0.6rem; }
+    a { color: #2e8a41; }
+    a:hover { text-decoration: underline; }
+
+    #theme-toggle {
+      position: fixed;
+      top: 1rem;
+      right: 1rem;
+      width: 2.5rem;
+      height: 2.5rem;
+      border: none;
+      border-radius: 50%;
+      background: var(--card);
+      font-size: 1.2rem;
+      cursor: pointer;
+      box-shadow: 0 2px 6px rgba(0,0,0,0.2);
+    }
+
+    :root[data-theme="light"] {
+      --bg: #f8fff5;
+      --text: #1a1a1a;
+      --card: #ffffff;
+      --meta: #555;
+    }
+    :root[data-theme="dark"] {
+      --bg: #1c1c1c;
+      --text: #f5f5f5;
+      --card: #2a2a2a;
+      --meta: #bbb;
+    }
+    .mermaid { margin: 1.5rem 0; }
+  </style>
+</head>
+<body>
+  <button id="theme-toggle">🌙</button>
+
+  <h1>AlphaEvolve: The AI That Rewrites Code and Redefines Discovery</h1>
+  <p class="meta">Date: May 20, 2025 • Estimated Reading Time: 20 min • Author: Kargi Chauhan</p>
+  <p class="sipping">☕️ Today I’m sipping: <em>Cold brew with a hint of cinnamon</em></p>
+  <p>
+    So, I stumbled across this AlphaEvolve paper when a friend shared it on May 15th, and let me tell you, it’s been a wild ride! I spent like three or four days diving into it, scribbling notes and evaluations on my iPad, and just brainstorming like crazy. Honestly, this paper is super cool it’s got me geeking out over math in a way I didn’t expect. I’m sharing the highlights here, but I’ve got a ton of thoughts jotted down that I’ll probably dig into later. Ready to see why this AI is such a game-changer? Let’s dive in!
+  </p>
+
+  <details class="toc">
+    <summary>Table of Contents</summary>
+    <ul>
+      <li><a href="#introduction">A Revolution in Code Evolution</a></li>
+      <li><a href="#how-it-works">Inside AlphaEvolve’s Engine</a></li>
+      <li><a href="#key-features">What Makes AlphaEvolve Shine</a></li>
+      <li><a href="#real-world-impact">Transforming the Real World</a></li>
+      <li><a href="#beyond-funsearch">Leaping Beyond FunSearch</a></li>
+      <li><a href="#challenges-future">Challenges and the Road Ahead</a></li>
+      <li><a href="#glossary">Glossary of Terms</a></li>
+      <li><a href="#citation">Citation</a></li>
+      <li><a href="#references">References</a></li>
+    </ul>
+  </details>
+
+  <h2 id="introduction">A Revolution in Code Evolution</h2>
+  <p>
+    Picture an AI that doesn’t just churn out code but sculpts it, like a master artisan refining a masterpiece over generations. That’s AlphaEvolve, Google DeepMind’s groundbreaking evolutionary coding agent. It’s not content with writing a single program—it evolves algorithms, pushing them to new heights of efficiency and creativity. From optimizing Google’s sprawling data centers to cracking open mathematical mysteries unsolved for decades, AlphaEvolve is a digital pioneer, blending the raw creative power of Large Language Models (LLMs) with the disciplined march of evolutionary computation. Ready to dive into a world where code evolves like life itself? Let’s explore how AlphaEvolve is rewriting the rules of scientific discovery.
+  </p>
+  <p>
+    Curious for more details? Check out the <a href="https://storage.googleapis.com/deepmind-media/DeepMind.com/Blog/alphaevolve-a-gemini-powered-coding-agent-for-designing-advanced-algorithms/AlphaEvolve.pdf">full paper</a> from Google DeepMind.
+  </p>
+
+  <h2 id="how-it-works">Inside AlphaEvolve’s Engine</h2>
+  <p>
+    AlphaEvolve is like a digital ecosystem where code evolves through natural selection, guided by the brilliance of LLMs and grounded in real-world performance. It’s a pipeline that transforms rough ideas into polished algorithms. Here’s a peek under the hood, visualized with a Mermaid diagram:
+  </p>
+  <div class="mermaid">
+    graph TD
+      A[Human Input<br>Define Problem, Criteria, Initial Code] --> B[Task Specification<br>Evaluation Function]
+      B --> C[Program Representation<br>EVOLVE-BLOCK Markers]
+      C --> D[Prompt Sampling<br>Rich Context with Past Solutions]
+      D --> E[Creative Generation<br>Gemini 2.0 Flash & Pro]
+      E --> F[Code Modification<br>Diffs or Full Rewrites]
+      F --> G[Automatic Evaluation<br>Run Code, Assess Metrics]
+      G --> H[Evolutionary Database<br>MAP-elites, Island Models]
+      H -->|Feedback Loop| D
+      H --> I[Distributed Pipeline<br>Asyncio, Parallel Execution]
+      I -->|Best Solutions| J[Output: Optimized Algorithm]
+  </div>
+  <p>
+    Let’s break down each step:
+  </p>
+  <ol>
+    <li><strong>Human Input:</strong> A human scientist or engineer sets the stage by defining the problem—say, optimizing a data center scheduler or solving a math puzzle. They provide an evaluation function (e.g., runtime or accuracy), an initial code snippet (even a rough one), and optional background knowledge, like a research paper or domain-specific insights.</li>
+    <li><strong>Task Specification and Evaluation:</strong> AlphaEvolve shines with “machine-gradeable” problems. The evaluation function maps code to scalar metrics, like speed or correctness, which the system maximizes. It can juggle multiple metrics simultaneously, encouraging diverse solutions. For example, optimizing both runtime and memory usage might lead to a more robust algorithm than focusing on runtime alone. Efficiency tricks like evaluation cascades (testing progressively harder cases) and parallelized evaluations keep things fast, while LLM-generated feedback can tackle qualitative aspects like code simplicity.</li>
+    <li><strong>Program Representation:</strong> Algorithms are stored as code, with sections marked for evolution using <code># EVOLVE-BLOCK-START</code> and <code># EVOLVE-BLOCK-END</code>. For example:
+      <pre>
+def matrix_multiply(a, b):
+    # EVOLVE-BLOCK-START
+    result = [[0 for _ in range(len(b[0]))] for _ in range(len(a))]
+    for i in range(len(a)):
+        for j in range(len(b[0])):
+            for k in range(len(b)):
+                result[i][j] += a[i][k] * b[k][j]
+    # EVOLVE-BLOCK-END
+    return result
+      </pre>
+      AlphaEvolve tweaks these blocks, proposing changes via diffs:
+      <pre>
+<<<<<<< SEARCH
+    result = [[0 for _ in range(len(b[0]))] for _ in range(len(a))]
+=======
+    result = np.zeros((len(a), len(b[0])))
+>>>>>>> REPLACE
+      </pre>
+      For small segments, it might rewrite the entire block.</li>
+    <li><strong>Flexible Abstraction:</strong> AlphaEvolve can evolve raw code, constructor functions (e.g., building a matrix multiplication algorithm), bespoke search algorithms, or even co-evolve solutions and search strategies. For instance, evolving a constructor might yield symmetric solutions, while a search algorithm suits non-symmetric problems like combinatorial puzzles.</li>
+    <li><strong>Prompt Sampling:</strong> The system crafts detailed prompts for LLMs, pulling from an evolutionary database of past solutions, evaluation scores, and problem context. Unlike FunSearch’s bare-bones prompts, AlphaEvolve includes high-performing “parent” programs, rendered outputs, and even external resources like PDFs, making the LLMs’ suggestions more informed.</li>
+    <li><strong>Creative Generation:</strong> An ensemble of LLMs—Gemini 2.0 Flash for rapid ideation and Gemini 2.0 Pro for deeper insights—drives creativity. These models propose code improvements, digesting feedback to refine their approach. For example, they might suggest a faster tiling strategy for matrix multiplication based on past evaluation results.</li>
+    <li><strong>Evolutionary Database:</strong> Inspired by MAP-elites and island models, this database stores solutions and their metrics, balancing exploration (new ideas) and exploitation (refining top performers). It’s like a genetic pool where the fittest algorithms survive and evolve.</li>
+    <li><strong>Distributed Pipeline:</strong> Built with Python’s asyncio, the pipeline runs LLM queries and evaluations in parallel, maximizing throughput. This lets AlphaEvolve test thousands of ideas within a computational budget, unlike FunSearch’s millions of samples.</li>
+  </ol>
+  <p>
+    The secret sauce? Grounding. By executing code and measuring its performance, AlphaEvolve avoids LLM “hallucinations”—those plausible but incorrect suggestions that can derail ungrounded AI. It’s like having a coach who tests every play before putting it in the game.
+  </p>
+
+  <h2 id="key-features">What Makes AlphaEvolve Shine</h2>
+  <p>
+    AlphaEvolve’s brilliance comes from a carefully orchestrated blend of components, as revealed by ablation studies (experiments where parts are removed to test their importance). Here’s what makes it tick:
+  </p>
+  <ul>
+    <li><strong>Evolutionary Core:</strong> The iterative evolution process outperforms repeatedly prompting an LLM, as it builds on past successes.</li>
+    <li><strong>Rich Context:</strong> Prompts packed with previous solutions, evaluation results, and problem details lead to smarter code suggestions. For instance, including a top-performing matrix multiplication algorithm in the prompt might inspire a better tiling strategy.</li>
+    <li><strong>Full-File Evolution:</strong> Unlike FunSearch’s focus on single functions (10-20 lines), AlphaEvolve tackles entire codebases, sometimes hundreds of lines, enabling complex optimizations.</li>
+    <li><strong>State-of-the-Art LLMs:</strong> Using Gemini 2.0 Flash and Pro gives AlphaEvolve the edge over smaller models, unlocking breakthrough ideas.</li>
+    <li><strong>Meta Prompts:</strong> Evolving the prompts themselves adapts the system dynamically, like teaching the AI to ask better questions.</li>
+  </ul>
+  <p>
+    Removing any of these components tanks performance, proving they’re all critical to AlphaEvolve’s magic.
+  </p>
+
+  <h2 id="real-world-impact">Transforming the Real World</h2>
+  <p>
+    AlphaEvolve isn’t just a lab experiment—it’s making tangible impacts at Google and beyond, from infrastructure to pure mathematics.
+  </p>
+  <h3>Optimizing Google’s Computational Empire</h3>
+  <ul>
+    <li><strong>Data Center Scheduling:</strong> AlphaEvolve crafted a heuristic for Google’s Borg scheduler, tailored to specific workloads. It recovered 0.7% of fleet-wide compute resources—think millions of CPU hours saved annually. The code’s interpretability made it easy to debug and deploy, unlike opaque neural network solutions.</li>
+    <li><strong>TPU Circuit Design:</strong> It simplified a Verilog implementation of a TPU arithmetic circuit, removing redundant bits to cut area and power consumption. Human designers validated the change, marking Gemini’s first direct contribution to TPU design via AlphaEvolve. This could ripple into future hardware efficiency gains.</li>
+    <li><strong>LLM Training Acceleration:</strong> AlphaEvolve optimized matrix multiplication kernels for Gemini’s training, achieving a 23% speedup over expert-designed heuristics, reducing overall training time by 1%. It slashed optimization time from months to days. It also boosted the FlashAttention kernel in Transformers by 32% and pre/postprocessing by 15%, tackling code not meant for human editing.</li>
+  </ul>
+  <h3>Redefining Algorithms</h3>
+  <p>
+    AlphaEvolve is a game-changer for algorithm design:
+  </p>
+  <ul>
+    <li><strong>Matrix Multiplication:</strong> It discovered a new algorithm for 4x4 complex-valued matrix multiplication using 48 scalar multiplications, beating Strassen’s 56-year-old record. It also set new benchmarks for 14 other matrix sizes, often evolving intricate algorithms to achieve these feats.</li>
+  </ul>
+  <h3>Cracking Mathematical Mysteries</h3>
+  <p>
+    AlphaEvolve tackled over 50 open mathematical problems, surpassing state-of-the-art in 20% of cases and matching best-known results in 75%. Standouts include:
+  </p>
+  <ul>
+    <li><strong>Kissing Number:</strong> In 11 dimensions, it raised the lower bound from 592 to 593 non-overlapping spheres touching a central sphere—a subtle but significant leap.</li>
+    <li><strong>Minimum Overlap Problem:</strong> It improved bounds on Erdős’s classic problem, finding better point arrangements.</li>
+    <li><strong>Packing Problems:</strong> It advanced results for hexagons, point placements minimizing distance ratios, and Heilbronn problem variants, often by evolving multi-stage search algorithms that made big gains early and fine-tuned later.</li>
+  </ul>
+  <p>
+    Human experts played a key role, suggesting problems and refining formulations, but AlphaEvolve did the heavy lifting of discovery.
+  </p>
+
+  <h2 id="beyond-funsearch">Leaping Beyond FunSearch</h2>
+  <p>
+    AlphaEvolve builds on FunSearch, DeepMind’s earlier LLM-guided evolution tool, but it’s like comparing a bicycle to a rocket ship. Here’s how it soars:
+  </p>
+  <ul>
+    <li><strong>Scale:</strong> Evolves entire code files (hundreds of lines) vs. FunSearch’s single functions (10-20 lines).</li>
+    <li><strong>Language Flexibility:</strong> Supports any language with a Python-executable evaluator, unlike FunSearch’s Python-only constraint.</li>
+    <li><strong>Evaluation Time:</strong> Handles hours-long evaluations in parallel on accelerators, vs. FunSearch’s 20-minute limit on a single CPU.</li>
+    <li><strong>Efficiency:</strong> Uses thousands of LLM samples, not FunSearch’s millions, saving compute.</li>
+    <li><strong>Context:</strong> Rich prompts with feedback, past solutions, and external resources vs. FunSearch’s minimal context.</li>
+    <li><strong>Multi-Metric Optimization:</strong> Optimizes multiple objectives for diverse, robust solutions, unlike FunSearch’s single focus.</li>
+  </ul>
+  <p>
+    These upgrades make AlphaEvolve a versatile beast for tackling complex, real-world problems.
+  </p>
+
+  <h2 id="challenges-future">Challenges and the Road Ahead</h2>
+  <p>
+    AlphaEvolve is a titan, but it’s not invincible. It relies on problems with automated evaluators, which can be a bottleneck in fields like biology or physics where outcomes are harder to quantify numerically. For example, evaluating a new drug’s efficacy might require complex simulations beyond simple metrics. Future work could integrate LLM-driven high-level ideation—say, brainstorming hypotheses—before translating them into code for evaluation.
+  </p>
+  <p>
+    The future is thrilling. AlphaEvolve could distill its discoveries into base LLMs, creating a feedback loop where the AI improves itself. Its ability to optimize Gemini’s training hints at a world where AI accelerates its own evolution. Researchers are also eyeing ways to make evaluations more flexible, perhaps by combining LLM feedback with numerical metrics, opening doors to new domains like materials science or drug discovery.
+  </p>
+
+  <h2 id="call-to-action">A Call for Further Research</h2>
+  <p>
+    Like reward hacking in RLHF, AlphaEvolve’s reliance on automated evaluation opens questions about robustness. Could it “hack” poorly designed evaluators, optimizing for proxy metrics over true goals? Research into robust evaluation functions and hybrid human-AI feedback loops could ensure AlphaEvolve’s discoveries align with real-world needs. The AI community is called to explore these frontiers, building on AlphaEvolve’s foundation to create even more reliable, transformative systems.
+  </p>
+
+  <h2 id="glossary">Glossary of Terms</h2>
+  <ul>
+    <li><strong>AlphaEvolve:</strong> An evolutionary coding agent using LLMs to refine algorithms via code changes and automated evaluation.</li>
+    <li><strong>Evolutionary Computing:</strong> A search paradigm inspired by biological evolution, iteratively generating and refining solutions.</li>
+    <li><strong>Large Language Model (LLM):</strong> AI trained on vast text data, capable of generating and modifying code.</li>
+    <li><strong>Superoptimization:</strong> Finding the most optimal code for a task, surpassing standard compilers.</li>
+    <li><strong>Automatic Evaluation:</strong> Assessing code performance without human intervention, guiding evolution.</li>
+    <li><strong>EVOLVE-BLOCK START/END:</strong> Markers for sections of code AlphaEvolve can modify.</li>
+    <li><strong>Heuristic Function:</strong> A quick, approximate decision-making function for complex problems.</li>
+    <li><strong>Tiling Strategy:</strong> Dividing computations into smaller blocks for hardware efficiency.</li>
+    <li><strong>Kissing Number:</strong> Maximum non-overlapping spheres touching a central sphere in a dimension.</li>
+    <li><strong>Verilog:</strong> A hardware description language for electronic systems, used in TPU design.</li>
+    <li><strong>FlashAttention:</strong> An optimized attention mechanism for Transformers, enhancing speed and memory use.</li>
+    <li><strong>Tensor Decomposition:</strong> Representing a tensor as a sum of simpler components for faster computation.</li>
+  </ul>
+
+  <h2 id="citation">Citation</h2>
+  <div class="citation-container">
+    <pre id="bibtex" class="cite-box">@article{kargi2025alphaevolve,
+  title   = "AlphaEvolve: The AI That Rewrites Code and Redefines Discovery",
+  author  = "Kargi Chauhan",
+  journal = "kargisnotebook.github.io",
+  year    = "2025",
+  month   = "May",
+  url     = "https://kargichauhan.github.io/posts/alphaevolve.html"
+}</pre>
+    <button id="copy-btn">📋 Copy</button>
+  </div>
+
+  <h2 id="references">References</h2>
+  <ol class="refs">
+    <li>
+      Novikov, A., Vũ, N., et al. <a href="https://storage.googleapis.com/deepmind-media/DeepMind.com/Blog/alphaevolve-a-gemini-powered-coding-agent-for-designing-advanced-algorithms/AlphaEvolve.pdf">AlphaEvolve: A Coding Agent for Scientific and Algorithmic Discovery</a>. 
+      <em>Google DeepMind</em>, 2025.
+    </li>
+  </ol>
+
+  <script>
+    // Initialize theme
+    const htmlEl = document.documentElement;
+    const savedTheme = localStorage.getItem('theme') || 'light';
+    htmlEl.dataset.theme = savedTheme;
+
+    // Toggle button
+    const toggleBtn = document.getElementById('theme-toggle');
+    toggleBtn.textContent = savedTheme === 'light' ? '🌙' : '☀️';
+    toggleBtn.addEventListener('click', () => {
+      const next = htmlEl.dataset.theme === 'light' ? 'dark' : 'light';
+      htmlEl.dataset.theme = next;
+      localStorage.setItem('theme', next);
+      toggleBtn.textContent = next === 'light' ? '🌙' : '☀️';
+    });
+
+    // Copy BibTeX
+    document.getElementById('copy-btn').addEventListener('click', () => {
+      navigator.clipboard.writeText(document.getElementById('bibtex').textContent).then(() => {
+        const btn = document.getElementById('copy-btn');
+        btn.textContent = '✅ Copied!';
+        setTimeout(() => btn.textContent = '📋 Copy', 2000);
+      });
+    });
+  </script>
+</body>
+</html>
