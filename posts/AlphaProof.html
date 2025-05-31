@@ -1,0 +1,275 @@
+<!DOCTYPE html>
+<html lang="en" data-theme="light">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>When AI Meets Formal Maths: The Story of AlphaProof</title>
+  <link rel="stylesheet" href="../style.css" />
+  <link rel="icon" href="../favicon.ico" type="image/x-icon" />
+  <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@400;600&display=swap" rel="stylesheet"/>
+  <script src="https://cdn.jsdelivr.net/npm/mermaid@10.9.1/dist/mermaid.min.js"></script>
+  <script>
+    mermaid.initialize({ startOnLoad: true, theme: 'neutral' });
+  </script>
+  <style>
+    body {
+      max-width: 760px;
+      margin: auto;
+      padding: 2.5rem 1rem;
+      font-family: 'Outfit', sans-serif;
+      background-color: var(--bg);
+      color: var(--text);
+      transition: background 0.3s ease, color 0.3s ease;
+      font-size: 1.05rem;
+      line-height: 1.7;
+    }
+    h1 { font-size: 2.2rem; margin-bottom: 0.5rem; }
+    .meta { font-size: 0.9rem; color: var(--meta); margin-bottom: 2rem; }
+
+    details.toc {
+      background: var(--card);
+      padding: 1rem;
+      border-radius: 10px;
+      margin-bottom: 2rem;
+    }
+    details.toc a {
+      color: #1b821b;
+      text-decoration: none;
+    }
+    details.toc a:hover {
+      text-decoration: underline;
+    }
+
+    h2 { color: #0e8d36; margin-top: 2.5rem; }
+    pre, code {
+      background: #2e2e2e;
+      padding: 0.25rem 0.4rem;
+      border-radius: 5px;
+      color: #b8f5c8;
+    }
+    pre {
+      padding: 1rem;
+      overflow-x: auto;
+    }
+    .citation-container { position: relative; margin-top: 1rem; }
+    .cite-box {
+      background: #2b2b2b;
+      padding: 1rem;
+      border-radius: 8px;
+      white-space: pre-wrap;
+      font-family: monospace;
+      font-size: 0.9rem;
+      color: #c3ebc3;
+    }
+    #copy-btn {
+      position: absolute;
+      top: 10px;
+      right: 10px;
+      background-color: #349037;
+      color: white;
+      border: none;
+      padding: 0.4rem 0.8rem;
+      border-radius: 6px;
+      cursor: pointer;
+      font-size: 0.8rem;
+    }
+    #copy-btn:hover { background-color: #45a049; }
+    .refs li { margin-bottom: 0.6rem; }
+    a { color: #2e8a41; }
+    a:hover { text-decoration: underline; }
+
+    #theme-toggle {
+      position: fixed;
+      top: 1rem;
+      right: 1rem;
+      width: 2.5rem;
+      height: 2.5rem;
+      border: none;
+      border-radius: 50%;
+      background: var(--card);
+      font-size: 1.2rem;
+      cursor: pointer;
+      box-shadow: 0 2px 6px rgba(0,0,0,0.2);
+    }
+
+    :root[data-theme="light"] {
+      --bg: #f8fff5;
+      --text: #1a1a1a;
+      --card: #ffffff;
+      --meta: #555;
+    }
+    :root[data-theme="dark"] {
+      --bg: #1c1c1c;
+      --text: #f5f5f5;
+      --card: #2a2a2a;
+      --meta: #bbb;
+    }
+    .mermaid { margin: 1.5rem 0; }
+  </style>
+</head>
+<body>
+  <button id="theme-toggle">🌙</button>
+
+  <h1>When AI Meets Formal Maths: The Story of AlphaProof</h1>
+  <p class="meta">Date: May 31, 2025 • Estimated Reading Time: 10 min • Author: Kargi Chauhan</p>
+  <p class="sipping">☕️ Today I’m sipping: <em>Chamomile tea (night time actually!)</em></p>
+  <p>
+    <strong>Mathematics is a fundamental tool we use to describe, predict, and shape the natural world.</strong> It’s often seen as a core component of intelligence, requiring reasoning, planning, generalization, abstraction, knowledge, creativity, and even an eye for beauty. Throughout history, the way we do math has evolved, particularly the concept of a mathematical proof and the move from words to symbols. So let’s dive in :)
+  </p>
+  <p>
+    <em>Oh, hey there! Let me tell you about something really cool that people are working on—it’s like teaching computers to be super‐mathematicians! It’s called <strong>AlphaProof</strong>.</em>
+  </p>
+
+  <details class="toc">
+    <summary>Table of Contents</summary>
+    <ul>
+      <li><a href="#overview">Overview</a></li>
+      <li><a href="#formalisation">Computer Formalisation of Mathematics</a></li>
+      <li><a href="#alpha-proof">How AlphaProof Works</a></li>
+      <li><a href="#imo-apollo">The IMO “Apollo Program” for Math</a></li>
+      <li><a href="#results">Results: Landing on the Moon!</a></li>
+      <li><a href="#next-steps">What’s Next for AlphaProof?</a></li>
+      <li><a href="#credits">Credits</a></li>
+      <li><a href="#references">References</a></li>
+    </ul>
+  </details>
+
+  <h2 id="overview">Overview</h2>
+  <p>
+    You know how math is amazing? We use it to understand the world around us, build things, and even invent new stuff. People have been doing math for a <em>looooong</em> time, and proving things in math is super important—like showing that something is true for sure. At first, proofs were just like telling a story with words, but over time, they became more precise, using symbols and special rules.
+  </p>
+
+  <h2 id="formalisation">Computer Formalisation of Mathematics</h2>
+  <p>
+    Now, imagine if we could get computers to help us with math! That’s where something called <strong>Computer Formalisation of Mathematics</strong> comes in. It’s like putting all the math knowledge into a language the computer understands perfectly. One of the special languages used for this is called <strong>Lean</strong>. Think of Lean like a super‐precise tool that helps mathematicians build and check proofs on a computer.
+  </p>
+  <p>
+    There’s a huge project called <strong>Mathlib</strong>, which is like a giant library built by mathematicians using Lean. It has tons and tons of math knowledge, covering lots of different areas. The cool thing about putting math in a computer like this is that the computer can check if everything is perfectly right. It’s like having a helper who never makes a mistake when checking your homework!
+  </p>
+  <blockquote>
+    “Computer Formalisation of Mathematics: Putting all math knowledge into a language a computer understands perfectly.<br>
+     Lean: A super‐precise tool for building and checking proofs on a computer.<br>
+     Mathlib: A giant library of formalised math built in Lean.”
+  </blockquote>
+  <p>
+    But getting computers to do math isn’t easy. It can be hard for people to learn the computer languages, and the computer libraries are still growing.
+  </p>
+
+  <h2 id="alpha-proof">How AlphaProof Works</h2>
+  <p>
+    Okay, so how does <strong>AlphaProof</strong> work? Well, it uses an idea called <strong>Reinforcement Learning</strong>, or <em>RL</em> for short. RL is like teaching a computer to learn by trying things out. Imagine teaching a robot to play a game: it tries something, and if it works, it gets a <strong>reward</strong>. If it doesn’t work, it doesn’t get a reward. By trying lots and lots of times, it figures out the best way to play and win.
+  </p>
+  <p>
+    You might have heard of things like <strong>“AlphaGo”</strong>. That was a computer that learned to play the super‐difficult game of Go just by playing against itself, starting from scratch! It even found new ways to play that humans hadn’t thought of. <strong>“AlphaTensor”</strong> did something similar for finding super‐fast ways to multiply numbers.
+  </p>
+  <p>
+    The really awesome idea is: what if we could use this kind of learning for math? Math, especially using tools like Lean, is actually perfect for this! It’s like the computer gets a <em>perfect</em> signal—either the math step it tried is totally right (a <strong>reward!</strong>) or it’s not (no reward). This perfect feedback lets the computer learn and get better all by itself, just like AlphaGo did for games.
+  </p>
+  <p>
+    The big dream for <strong>AlphaProof</strong> is to reach <strong>superhuman intelligence</strong> in math and even discover new math truths, just like AlphaGo found new strategies in Go.
+  </p>
+
+  <h2 id="imo-apollo">The IMO “Apollo Program” for Math</h2>
+  <p>
+    So, the AlphaProof team decided to try something really ambitious—like an <strong>“Apollo program”</strong> to reach the moon! They wanted to see if their system could solve problems from the <strong>International Mathematics Olympiad (IMO)</strong>. The IMO is a super‐hard math competition for the best young math students from all over the world. The problems are really tricky and can take even experts hours to solve.
+  </p>
+  <p>
+    For the <strong>2024 IMO</strong>, they teamed up with another group working on geometry problems (called <strong>AlphaGeometry</strong>). AlphaProof focused on other types of problems, like algebra, number theory, and combinatorics.
+  </p>
+  <p>
+    Some of these IMO problems aren’t just about proving something is true—they ask you to find an answer first. AlphaProof was set up to work in a “hard mode”—it had to figure out the possible answers itself and then try to prove if they were right or wrong. It even used another AI called <strong>Gemini</strong> to help guess possible answers.
+  </p>
+  <p>
+    Because they wanted AlphaProof to focus on the math solving part, they decided to give the system the problems already translated into that <strong>super‐precise computer language (Lean)</strong>, instead of the original words.
+  </p>
+
+  <h2 id="results">Results: Landing on the Moon!</h2>
+  <p>
+    So, how did they do?
+  </p>
+  <ul>
+    <li><strong>Day 1:</strong> AlphaProof got <strong>9 points</strong>. It solved part of an algebra problem (P1) and almost all of a number theory problem (P2). It didn’t make progress on a combinatorics problem (P3).</li>
+    <li><strong>Day 2:</strong> AlphaGeometry solved the geometry problem (P4) perfectly and really fast—like, in seconds! AlphaProof didn’t make progress on the combinatorics problem (P5) but solved a bit of an algebra problem (P6).</li>
+  </ul>
+  <p>
+    By the end, AlphaProof fully solved problems P1, P2, and P6. AlphaGeometry fully solved P4. Problem P6 was incredibly tough—hardly any human contestants solved it completely.
+  </p>
+  <p>
+    Their total score was <strong>18 out of 42 points</strong>. This was enough to reach the score of a <strong>Silver medallist</strong> at the IMO! They just missed the score needed for a Gold medal.
+  </p>
+  <blockquote>
+    <em>“It’s like they successfully landed on the moon!”</em>
+  </blockquote>
+  <p>
+    They learned a lot from this. One challenge was that their math library (<strong>Mathlib</strong>) didn’t have everything they needed for some areas, especially geometry. The combinatorics problems were also super difficult for them. And, they used way, way more computer power than a person would.
+  </p>
+
+  <h2 id="next-steps">What’s Next for AlphaProof?</h2>
+  <p>
+    So, what’s next for <strong>AlphaProof</strong>? They want to teach it even more math, help it tackle problems at the very edge of what mathematicians understand, and eventually, make it a helpful tool for anyone who thinks about math.
+  </p>
+  <p>
+    <strong>It’s pretty amazing</strong> what they’re building, trying to push the boundaries of what computers and people can do together in math!
+  </p>
+
+  <h2 id="credits">Credits</h2>
+  <p>
+    Thank you to the AlphaProof team and all contributors to Lean, Mathlib, and the IMO problem translations.
+  </p>
+
+  <h2 id="citation">Citation</h2>
+  <div class="citation-container">
+    <pre id="bibtex" class="cite-box">@article{chauhan2025alphaproof,
+  title   = "When AI Meets Formal Maths: The Story of AlphaProof",
+  author  = "Kargi Chauhan",
+  journal = "Kargi's Notebook",
+  year    = "2025",
+  month   = "May",
+  url     = "https://kargichauhan.github.io/posts/alphaproof.html"
+}</pre>
+    <button id="copy-btn">📋 Copy</button>
+  </div>
+
+  <h2 id="references">References</h2>
+  <ol class="refs">
+    <li>
+      Avigad, J., et al. <a href="https://leanprover-community.github.io/mathlib-overview">Mathlib: The Lean Mathematical Library</a>.  
+      <em>Lean Community</em>, 2024.
+    </li>
+    <li>
+      Razavi, S. M., & Eldan, R. <a href="https://arxiv.org/abs/2205.10555">AlphaGo, AlphaTensor, and Beyond: Applying Reinforcement Learning to Formal Mathematics</a>.  
+      <em>arXiv preprint arXiv:2205.10555</em>, 2022.
+    </li>
+    <li>
+      Upreti, N., Chauhan, K., & Belle, V. <a href="https://doi.org/10.1016/j.artint.2025.103453">Neural‐Symbolic Visual Reasoning via LTNs, SMT, and Symbolic Program Synthesis</a>.  
+      <em>Artificial Intelligence and its Applications Institute, University of Edinburgh</em>, 2025.
+    </li>
+  </ol>
+
+  <script>
+    // Initialize theme
+    const htmlEl = document.documentElement;
+    const savedTheme = localStorage.getItem('theme') || 'light';
+    htmlEl.dataset.theme = savedTheme;
+
+    // Toggle button
+    const toggleBtn = document.getElementById('theme-toggle');
+    toggleBtn.textContent = savedTheme === 'light' ? '🌙' : '☀️';
+    toggleBtn.addEventListener('click', () => {
+      const next = htmlEl.dataset.theme === 'light' ? 'dark' : 'light';
+      htmlEl.dataset.theme = next;
+      localStorage.setItem('theme', next);
+      toggleBtn.textContent = next === 'light' ? '🌙' : '☀️';
+    });
+
+    // Copy BibTeX
+    document.getElementById('copy-btn').addEventListener('click', () => {
+      navigator.clipboard.writeText(document.getElementById('bibtex').textContent).then(() => {
+        const btn = document.getElementById('copy-btn');
+        btn.textContent = '✅ Copied!';
+        setTimeout(() => btn.textContent = '📋 Copy', 2000);
+      });
+    });
+  </script>
+</body>
+</html>
