@@ -1,0 +1,324 @@
+<!DOCTYPE html>
+<html lang="en" data-theme="light">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>DSA: The Interview Survival Guide</title>
+  <link rel="stylesheet" href="../style.css" />
+  <link rel="icon" href="../favicon.ico" type="image/x-icon" />
+  <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@400;600&display=swap" rel="stylesheet"/>
+  <script src="https://cdn.jsdelivr.net/npm/mermaid@10.9.1/dist/mermaid.min.js"></script>
+  <script>
+    mermaid.initialize({ startOnLoad: true, theme: 'neutral' });
+  </script>
+  <style>
+    body {
+      max-width: 760px;
+      margin: auto;
+      padding: 2.5rem 1rem;
+      font-family: 'Outfit', sans-serif;
+      background-color: var(--bg);
+      color: var(--text);
+      transition: background 0.3s ease, color 0.3s ease;
+      font-size: 1.05rem;
+      line-height: 1.7;
+    }
+    h1 { font-size: 2.2rem; margin-bottom: 0.5rem; }
+    .meta { font-size: 0.9rem; color: var(--meta); margin-bottom: 2rem; }
+    details.toc {
+      background: var(--card);
+      padding: 1rem;
+      border-radius: 10px;
+      margin-bottom: 2rem;
+    }
+    details.toc a {
+      color: #1b821b;
+      text-decoration: none;
+    }
+    details.toc a:hover {
+      text-decoration: underline;
+    }
+    h2 { color: #0e8d36; margin-top: 2.5rem; }
+    pre, code {
+      background: #2e2e2e;
+      padding: 0.25rem 0.4rem;
+      border-radius: 5px;
+      color: #b8f5c8;
+    }
+    pre {
+      padding: 1rem;
+      overflow-x: auto;
+    }
+    .citation-container { position: relative; margin-top: 1rem; }
+    .cite-box {
+      background: #2b2b2b;
+      padding: 1rem;
+      border-radius: 8px;
+      white-space: pre-wrap;
+      font-family: monospace;
+      font-size: 0.9rem;
+      color: #c3ebc3;
+    }
+    #copy-btn {
+      position: absolute;
+      top: 10px;
+      right: 10px;
+      background-color: #349037;
+      color: white;
+      border: none;
+      padding: 0.4rem 0.8rem;
+      border-radius: 6px;
+      cursor: pointer;
+      font-size: 0.8rem;
+    }
+    #copy-btn:hover { background-color: #45a049; }
+    .refs li { margin-bottom: 0.6rem; }
+    a { color: #2e8a41; }
+    a:hover { text-decoration: underline; }
+    #theme-toggle {
+      position: fixed;
+      top: 1rem;
+      right: 1rem;
+      width: 2.5rem;
+      height: 2.5rem;
+      border: none;
+      border-radius: 50%;
+      background: var(--card);
+      font-size: 1.2rem;
+      cursor: pointer;
+      box-shadow: 0 2px 6px rgba(0,0,0,0.2);
+    }
+    :root[data-theme="light"] {
+      --bg: #f8fff5;
+      --text: #1a1a1a;
+      --card: #ffffff;
+      --meta: #555;
+    }
+    :root[data-theme="dark"] {
+      --bg: #1c1c1c;
+      --text: #f5f5f5;
+      --card: #2a2a2a;
+      --meta: #bbb;
+    }
+    .mermaid { margin: 1.5rem 0; }
+  </style>
+</head>
+<body>
+  <button id="theme-toggle">🌙</button>
+  <h1>DSA for Humans: The Interview Survival Guide</h1>
+  <p class="meta">Date: June 9, 2025 • Estimated Reading Time: 15-20 min • Author: Kargi Chauhan</p>
+  <p class="sipping">🍵 Today I’m sipping: <em>Iced blueberry matcha</em></p>
+  <p>Think of this guide as your calm coding tea session before the storm. Friendly logic + pseudocode + the LeetCode link you’ll love/hate. Let’s make friends with arrays, trees, graphs & the rest of the gang!</p>
+
+  <details class="toc">
+    <summary>📚 Table of Contents</summary>
+    <ul>
+      <li><a href="#arrays">Arrays & Strings</a></li>
+      <li><a href="#linked-lists">Linked Lists</a></li>
+      <li><a href="#stacks-queues">Stacks & Queues</a></li>
+      <li><a href="#trees">Trees</a></li>
+      <li><a href="#graphs">Graphs</a></li>
+      <li><a href="#hashing">Hashing</a></li>
+      <li><a href="#heaps">Heaps</a></li>
+      <li><a href="#tries">Tries</a></li>
+      <li><a href="#union-find">Disjoint Sets</a></li>
+      <li><a href="#sorting">Sorting</a></li>
+      <li><a href="#searching">Searching</a></li>
+      <li><a href="#dp">Dynamic Programming</a></li>
+      <li><a href="#backtracking">Backtracking</a></li>
+    </ul>
+  </details>
+
+  <h2 id="arrays">Arrays & Strings</h2>
+  <p>Think of arrays as rows of boxes and strings as boxes filled with letters. You can access any item instantly. Perfect for sequential data.</p>
+  <p><strong>Problem:</strong> <a href="https://leetcode.com/problems/two-sum/" target="_blank">Two Sum</a></p>
+  <pre><code>seen = {}
+for i, num in enumerate(nums):
+    complement = target - num
+    if complement in seen:
+        return [seen[complement], i]
+    seen[num] = i</code></pre>
+
+  <h2 id="linked-lists">Linked Lists</h2>
+  <p>Imagine a string of beads—each knows only its next. Reversing a list is like flipping the beads' order one by one.</p>
+  <p><strong>Problem:</strong> <a href="https://leetcode.com/problems/reverse-linked-list/" target="_blank">Reverse Linked List</a></p>
+  <pre><code>prev = None
+curr = head
+while curr:
+    next_node = curr.next
+    curr.next = prev
+    prev = curr
+    curr = next_node
+return prev</code></pre>
+
+  <h2 id="stacks-queues">Stacks & Queues</h2>
+  <p>Stacks = last-in-first-out. Queues = first-in-first-out. Stacks are great for undo functionality, queues for real-time processing.</p>
+  <p><strong>Problem:</strong> <a href="https://leetcode.com/problems/valid-parentheses/" target="_blank">Valid Parentheses</a></p>
+  <pre><code>stack = []
+pairs = {')': '(', ']': '[', '}': '{'}
+for char in s:
+    if char in '([{':
+        stack.append(char)
+    elif not stack or stack[-1] != pairs[char]:
+        return False
+    else:
+        stack.pop()
+return not stack</code></pre>
+
+  <h2 id="trees">Trees</h2>
+  <p>Trees are structured like a family tree. Each node can branch out to children. Depth is how far the tree goes down.</p>
+  <p><strong>Problem:</strong> <a href="https://leetcode.com/problems/maximum-depth-of-binary-tree/" target="_blank">Maximum Depth</a></p>
+  <pre><code>def depth(node):
+    if not node:
+        return 0
+    return 1 + max(depth(node.left), depth(node.right))</code></pre>
+
+  <h2 id="graphs">Graphs</h2>
+  <p>Like a map of cities and roads. You explore it with BFS or DFS to find connections, components, or paths.</p>
+  <p><strong>Problem:</strong> <a href="https://leetcode.com/problems/number-of-islands/" target="_blank">Number of Islands</a></p>
+  <pre><code>def dfs(i, j):
+    if out_of_bounds or grid[i][j] == '0':
+        return
+    grid[i][j] = '0'
+    for x, y in directions:
+        dfs(i + x, j + y)
+
+for i in range(rows):
+    for j in range(cols):
+        if grid[i][j] == '1':
+            dfs(i, j)
+            count += 1</code></pre>
+
+  <h2 id="hashing">Hashing</h2>
+  <p>Think of hashing as creating labels for instant lookup. Ideal for grouping, counting, or deduplication.</p>
+  <p><strong>Problem:</strong> <a href="https://leetcode.com/problems/group-anagrams/" target="_blank">Group Anagrams</a></p>
+  <pre><code>from collections import defaultdict
+anagrams = defaultdict(list)
+for word in words:
+    key = tuple(sorted(word))
+    anagrams[key].append(word)
+return list(anagrams.values())</code></pre>
+
+  <h2 id="heaps">Heaps</h2>
+  <p>Heaps are binary trees that always keep the largest/smallest at the top. Used for top-k problems or priority queues.</p>
+  <p><strong>Problem:</strong> <a href="https://leetcode.com/problems/kth-largest-element-in-a-stream/" target="_blank">Kth Largest</a></p>
+  <pre><code>import heapq
+heap = []
+for num in stream:
+    heapq.heappush(heap, num)
+    if len(heap) > k:
+        heapq.heappop(heap)
+return heap[0]</code></pre>
+
+  <h2 id="tries">Tries</h2>
+  <p>Prefix trees that store characters level by level. Perfect for autocomplete, search, and prefix queries.</p>
+  <p><strong>Problem:</strong> <a href="https://leetcode.com/problems/implement-trie-prefix-tree/" target="_blank">Implement Trie</a></p>
+  <pre><code>def insert(word):
+    node = root
+    for char in word:
+        if char not in node:
+            node[char] = {}
+        node = node[char]
+    node['$'] = True</code></pre>
+
+  <h2 id="union-find">Disjoint Sets</h2>
+  <p>Useful for checking if two nodes belong to the same group. Helps in cycle detection, Kruskal’s algorithm, etc.</p>
+  <p><strong>Problem:</strong> <a href="https://leetcode.com/problems/number-of-connected-components-in-an-undirected-graph/" target="_blank">Connected Components</a></p>
+  <pre><code>parent = list(range(n))
+
+def find(x):
+    if parent[x] != x:
+        parent[x] = find(parent[x])
+    return parent[x]
+
+def union(x, y):
+    parent[find(x)] = find(y)</code></pre>
+
+  <h2 id="sorting">Sorting</h2>
+  <p>Arrange data in a specific order. Foundation for efficient searching, comparison, and ranking algorithms.</p>
+  <p><strong>Problem:</strong> <a href="https://leetcode.com/problems/sort-colors/" target="_blank">Sort Colors</a></p>
+  <pre><code>low, mid, high = 0, 0, len(nums)-1
+while mid <= high:
+    if nums[mid] == 0:
+        nums[low], nums[mid] = nums[mid], nums[low]
+        low += 1; mid += 1
+    elif nums[mid] == 1:
+        mid += 1
+    else:
+        nums[mid], nums[high] = nums[high], nums[mid]
+        high -= 1</code></pre>
+
+  <h2 id="searching">Searching</h2>
+  <p>Efficiently finding elements. Binary search works on sorted arrays by eliminating half the space each step.</p>
+  <p><strong>Problem:</strong> <a href="https://leetcode.com/problems/binary-search/" target="_blank">Binary Search</a></p>
+  <pre><code>low, high = 0, len(arr) - 1
+while low <= high:
+    mid = (low + high) // 2
+    if arr[mid] == target:
+        return mid
+    elif arr[mid] < target:
+        low = mid + 1
+    else:
+        high = mid - 1
+return -1</code></pre>
+
+  <h2 id="dp">Dynamic Programming</h2>
+  <p>Solving big problems by combining solutions to smaller subproblems. Avoids recomputation using memory (memoization).</p>
+  <p><strong>Problem:</strong> <a href="https://leetcode.com/problems/climbing-stairs/" target="_blank">Climbing Stairs</a></p>
+  <pre><code>dp = [0] * (n + 1)
+dp[1], dp[2] = 1, 2
+for i in range(3, n+1):
+    dp[i] = dp[i-1] + dp[i-2]
+return dp[n]</code></pre>
+
+  <h2 id="backtracking">Backtracking</h2>
+  <p>Explore all possibilities, undo decisions when they lead to dead ends. Perfect for permutations, Sudoku, etc.</p>
+  <p><strong>Problem:</strong> <a href="https://leetcode.com/problems/permutations/" target="_blank">Permutations</a></p>
+  <pre><code>def backtrack(path):
+    if len(path) == len(nums):
+        result.append(path[:])
+        return
+    for num in nums:
+        if num in path:
+            continue
+        path.append(num)
+        backtrack(path)
+        path.pop()</code></pre>
+
+    <h2 id="citations">📚 References</h2>
+  <ul class="refs">
+    <li><a href="https://leetcode.com" target="_blank">LeetCode: The go-to platform for interview problems</a></li>
+    <li>CLRS (Cormen, Leiserson, Rivest, Stein). <em>Introduction to Algorithms</em>. MIT Press.</li>
+    <li>NeetCode.io - <a href="https://neetcode.io/" target="_blank">Curated LeetCode patterns and walkthroughs</a></li>
+    <li>Gayle Laakmann McDowell. <em>Cracking the Coding Interview</em>. CareerCup.</li>
+    <li>Tim Roughgarden’s <a href="https://timroughgarden.org/" target="_blank">Stanford Algorithms Course</a></li>
+  </ul>
+
+  <div class="citation-container">
+    <pre id="bibtex" class="cite-box">@article{chauhan2025dsa,
+  title   = "DSA for Humans: The Interview Survival Guide",
+  author  = "Kargi Chauhan",
+  journal = "Kargi's Notebook",
+  year    = "2025",
+  month   = "June",
+  url     = "https://kargichauhan.github.io/posts/dsa.html"
+}</pre>
+    <button id="copy-btn">📋 Copy</button>
+  </div>
+
+  <script>
+    const htmlEl = document.documentElement;
+    const savedTheme = localStorage.getItem('theme') || 'light';
+    htmlEl.dataset.theme = savedTheme;
+
+    const toggleBtn = document.getElementById('theme-toggle');
+    toggleBtn.textContent = savedTheme === 'light' ? '🌙' : '☀️';
+    toggleBtn.addEventListener('click', () => {
+      const next = htmlEl.dataset.theme === 'light' ? 'dark' : 'light';
+      htmlEl.dataset.theme = next;
+      localStorage.setItem('theme', next);
+      toggleBtn.textContent = next === 'light' ? '🌙' : '☀️';
+    });
+  </script>
+</body>
+</html>
